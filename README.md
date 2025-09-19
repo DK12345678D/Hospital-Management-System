@@ -1,12 +1,13 @@
+
 <h1 align="center"> 🏥 Hospital Management System </h1>
 
-<div align="center"> 
+---
+<p align="center">
+A full-stack hospital management application built with <b>Angular</b> and <b>Spring Boot</b>.<br>
+Role-based dashboards for <b>Doctors</b> and <b>Admins</b> to manage patients, appointments, and medicines.
+</p>
 
-A full-stack hospital management application built with **Angular** and **Spring Boot**.  
-The system provides role-based dashboards for **Doctors** and **Admins** to manage patients, appointments, and medicines.  
-
-</div>
-
+---
 ## ✨ Features  
 
 👨‍⚕️ **Doctor Dashboard**  
