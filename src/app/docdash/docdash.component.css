@@ -1,0 +1,53 @@
+/* Table container */
+.table {
+  border-radius: 12px;
+  overflow: hidden;
+  /* keeps header corners rounded */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  /* slightly deeper shadow for depth */
+  background-color: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* Table header styling */
+.table thead {
+  background-color: #010101;
+  /* slightly darker for contrast */
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+/* Optional: Zebra striping for rows */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+/* Hover effect for rows */
+.table-hover tbody tr:hover {
+  background-color: #e6f0fa;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+/* Table cell padding for compact layout */
+.table th,
+.table td {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+/* Navbar fixed at top */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  /* ensures it stays above content */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  /* subtle shadow for navbar */
+}

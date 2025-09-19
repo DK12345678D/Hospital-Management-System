@@ -1,0 +1,39 @@
+/* Table Styling */
+.table {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* softer shadow */
+  border-radius: 8px;
+  overflow: hidden;
+  /* keeps rounded corners on header */
+}
+
+/* Table Header */
+.table thead {
+  background-color: #34495e;
+  /* darker gray-blue for contrast */
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+/* Zebra stripes for rows */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+/* Hover effect */
+.table-hover tbody tr:hover {
+  background-color: #e8f0f8;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  /* ensures it stays above content */
+}

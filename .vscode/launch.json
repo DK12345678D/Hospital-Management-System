@@ -1,0 +1,41 @@
+{
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "DocLoginApplication",
+      "request": "launch",
+      "mainClass": "com.example.doclogin.DocLoginApplication",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "DemoApplication",
+      "request": "launch",
+      "mainClass": "com.example.hospital.DemoApplication",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "AppointmentApplication",
+      "request": "launch",
+      "mainClass": "com.example.doclogin.AppointmentApplication",
+      "projectName": "com.example-Backend"
+    },
+    {
+      "name": "ng serve",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start",
+      "url": "http://localhost:4200/"
+    },
+    {
+      "name": "ng test",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: test",
+      "url": "http://localhost:9876/debug.html"
+    }
+  ]
+}

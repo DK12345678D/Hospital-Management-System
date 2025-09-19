@@ -1,0 +1,39 @@
+/* Table container */
+.table {
+  border-radius: 12px;
+  overflow: hidden;
+  /* keeps rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* softer shadow */
+}
+
+/* Table Header */
+.table thead {
+  background-color: #34495e;
+  /* dark gray-blue for contrast */
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+/* Zebra striping */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+/* Hover effect */
+.table-hover tbody tr:hover {
+  background-color: #eef4fb;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Navbar stays fixed at top */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  /* ensures it stays above content */
+}

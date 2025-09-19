@@ -1,0 +1,42 @@
+/* Table Styling */
+.table {
+  border-radius: 12px;
+  /* rounded corners */
+  overflow: hidden;
+  /* ensures rounded corners apply to header */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* softer shadow */
+  border-collapse: separate;
+  /* keeps rounded corners with box-shadow */
+}
+
+/* Table Header */
+.table thead {
+  background-color: #08090a;
+  /* modern dark gray-blue */
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+/* Zebra striping for rows */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+/* Hover effect */
+.table-hover tbody tr:hover {
+  background-color: #eef4fb;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Navbar fixed at top */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  /* ensures it stays above content */
+}

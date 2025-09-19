@@ -1,0 +1,36 @@
+/* Table styling */
+.table {
+  border-radius: 12px; /* rounded corners */
+  overflow: hidden; /* ensures header respects border radius */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* softer shadow */
+  background-color: #fff;
+}
+
+/* Table header */
+.table thead {
+  background-color: #95a5a6;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  font-weight: bold;
+}
+
+/* Optional: striped rows */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+/* Optional: hover effect for rows */
+.table-hover tbody tr:hover {
+  background-color: #eef3f7;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Navbar fixed at top */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030; /* ensures navbar stays above content */
+}

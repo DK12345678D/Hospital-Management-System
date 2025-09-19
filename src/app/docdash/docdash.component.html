@@ -1,0 +1,123 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+/>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="#">
+      <i class="bi bi-hospital me-2"></i> SANJIVANI HOSPITALS
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/createpatient">
+            <i class="bi bi-person-plus me-1"></i> Add Patient
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/medicinelist">
+            <i class="bi bi-box-seam me-1"></i> View Medicines
+          </a>
+        </li>
+      </ul>
+
+      <div class="mx-2">
+        <button class="btn btn-danger d-flex align-items-center">
+          <i class="bi bi-box-arrow-right me-1"></i>
+          <a style="color: white; text-decoration: none" routerLink="/home">
+            Logout
+          </a>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Content -->
+<div class="container mt-5">
+  <h2 class="mb-3">
+    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+  </h2>
+  <p class="text-muted fs-5">
+    <marquee behavior="scroll" direction="left">
+      Welcome to Dashboard. Please find the patient list below! Click <b>Add Patient</b> to add new patients or <b>View Medicines</b> to check medicines.
+    </marquee>
+  </p>
+  <hr />
+
+  <!-- Search -->
+  <div class="input-group mb-3">
+    <span class="input-group-text"><i class="bi bi-search"></i></span>
+    <input
+      type="text"
+      name="search"
+      [(ngModel)]="searchText"
+      class="form-control"
+      placeholder="Search patients..."
+    />
+  </div>
+
+  <h4 class="text-secondary mb-3">
+    <i class="bi bi-people-fill me-2"></i> Current Patient List in your Queue
+  </h4>
+
+  <!-- Table -->
+  <div class="tableFixHead">
+    <table class="table table-striped table-hover">
+      <thead class="table-header text-center">
+        <tr>
+          <th><i class="bi bi-hash"></i> ID</th>
+          <th><i class="bi bi-person"></i> Name</th>
+          <th><i class="bi bi-calendar-heart"></i> Age</th>
+          <th><i class="bi bi-droplet-half"></i> Blood Type</th>
+          <th><i class="bi bi-exclamation-triangle"></i> Urgency</th>
+          <th><i class="bi bi-gear"></i> Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients | filter: searchText">
+          <td>{{ patient.id }}</td>
+          <td>{{ patient.name }}</td>
+          <td>{{ patient.age }}</td>
+          <td>{{ patient.blood }}</td>
+          <td>{{ patient.urgency }}</td>
+          <td class="d-flex gap-2">
+            <button
+              (click)="updatePatient(patient.id)"
+              class="btn btn-info d-flex align-items-center"
+            >
+              <i class="bi bi-pencil-square me-1"></i> Update
+            </button>
+            <button
+              (click)="deletePatient(patient.id)"
+              class="btn btn-danger d-flex align-items-center"
+            >
+              <i class="bi bi-trash me-1"></i> Delete
+            </button>
+            <button
+              (click)="viewPatient(patient.id)"
+              class="btn btn-success d-flex align-items-center"
+            >
+              <i class="bi bi-eye me-1"></i> View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
