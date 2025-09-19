@@ -8,15 +8,18 @@ The system provides role-based dashboards for **Doctors** and **Admins** to mana
 ## ✨ Features  
 
 👨‍⚕️ **Doctor Dashboard**  
-- View patients under treatment with diagnostic details  
-- Perform CRUD operations on patient records  
-- Add and maintain the medicine list  
+- 👀 View patients under treatment with diagnostic details  
+- ➕ Add new patient records  
+- ✏️ Update existing patient details  
+- 🗑️ Delete patient records  
+- 💊 Manage and maintain the medicine list  
 
 🧑‍💼 **Admin Dashboard**  
-- View current patient list (with sensitive details hidden)  
-- Manage and update appointments (CRUD operations)  
-
----
+- 👀 View current patient list (with sensitive details hidden)  
+- ➕ Add new appointments  
+- ✏️ Update existing appointments  
+- 🗑️ Delete appointments  
+- 👀 View appointment list  
 
 ## 🛠️ Tech Stack  
 
