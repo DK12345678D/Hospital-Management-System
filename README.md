@@ -1,4 +1,3 @@
-
 <h1 align="center"> 🏥 Hospital Management System </h1>   
 
 ---
