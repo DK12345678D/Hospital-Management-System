@@ -6,7 +6,7 @@ A full-stack hospital management application built with <b>Angular</b> and <b>Sp
 Role-based dashboards for <b>Doctors</b> and <b>Admins</b> to manage patients, appointments, and medicines.
 </p>
  
----
+--- 
 ## ✨ Features  
 
 👨‍⚕️ **Doctor Dashboard**  
