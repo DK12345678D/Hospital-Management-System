@@ -1,5 +1,5 @@
 <h1 align="center"> 🏥 Hospital Management System </h1>                                      
-  
+     
 ---   
 <p align="center">        
 A full-stack hospital management application built with <b>Angular</b> and <b>Spring Boot</b>.<br>
