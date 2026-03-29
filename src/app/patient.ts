@@ -7,4 +7,5 @@ export class Patient {
     dose: string;
     fees: string;
     urgency: string;
+    latestVisit: string;
 }

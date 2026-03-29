@@ -1,28 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminauthService {
-  constructor() {}
 
-  authenticate(username2: string, password2: string) {
-    if (username2 === 'admin' && password2 === 'admin123') {
-      sessionStorage.setItem('username2', username2);
-      return true;
-    } else {
-      return false;
-    }
+  private baseUrl = `${environment.apiUrl}/auth`;
+
+  constructor(private http: HttpClient) {}
+
+  authenticate(email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/Admin/SignIn`, { identifier: email, password }).pipe(
+      tap(res => {
+        if (res && res.data && res.data.token) {
+          sessionStorage.setItem('token', res.data.token);
+          sessionStorage.setItem('role', 'ADMIN');
+          sessionStorage.setItem('email', res.data.email);
+        }
+      })
+    );
   }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('username2');
-    console.log(!(user === null));
-    return !(user === null);
+    return !!sessionStorage.getItem('token') && sessionStorage.getItem('role') === 'ADMIN';
   }
 
   logOut() {
-    sessionStorage.removeItem('username2');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('role');
+    sessionStorage.removeItem('email');
   }
 }

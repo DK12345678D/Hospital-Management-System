@@ -3,82 +3,107 @@
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 />
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <i class="bi bi-hospital me-2"></i> SANJIVANI HOSPITALS
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg py-3">
+  <div class="container-fluid px-lg-5">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <i class="bi bi-capsule-fill me-3 text-info fs-3"></i> SANJIVANI <span class="ms-1 fw-bold text-uppercase">Pharmacy</span>
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/docdash">
-            <i class="bi bi-arrow-left-circle me-1"></i> Back
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/createmedicine">
-            <i class="bi bi-plus-circle me-1"></i> Add Medicines
-          </a>
-        </li>
-      </ul>
+    <div class="ms-auto d-flex gap-3">
+        <a class="btn btn-outline-light text-white rounded-pill px-4 fw-bold border-2 d-flex align-items-center gap-2" routerLink="/docdash">
+          <i class="bi bi-person-badge fs-5"></i> Back to Clinical Dash
+        </a>
+        <a class="btn btn-success text-white rounded-pill px-4 fw-bold shadow-lg d-flex align-items-center gap-2" routerLink="/createmedicine">
+          <i class="bi bi-plus-circle-fill fs-5"></i> Add Inventory
+        </a>
     </div>
   </div>
 </nav>
 
-<!-- Content -->
-<div class="container mt-5" style="padding-top: 70px;">
-  <h2><i class="bi bi-capsule me-2 text-primary"></i> Medicine List</h2>
-  <p class="text-muted fs-5">
-    Welcome to the medicine list page. Click
-    <strong>Add Medicines</strong> to register new medicines.
-  </p>
-  <hr />
+<div class="container-fluid px-lg-5 py-5 animate-fade-in">
+  <div class="row align-items-center mb-5 g-4">
+    <div class="col-md-7">
+      <h2 class="fw-bold text-dark display-5 mb-2">Pharmaceutical Inventory</h2>
+      <p class="text-secondary fs-5 opacity-75 fw-medium">Managing clinical medical supply and pharmaceutical distribution.</p>
+    </div>
+    <div class="col-md-5">
+       <div class="card p-3 border-0 shadow-sm bg-white d-flex flex-row align-items-center">
+         <div class="bg-primary-subtle text-primary p-3 rounded-circle me-4">
+            <i class="bi bi-box-seam-fill fs-3"></i>
+         </div>
+         <div>
+            <h4 class="fw-bold mb-0 text-primary">{{medicines.length || 0}} Drugs</h4>
+            <span class="text-muted small fw-bold text-uppercase tracking-wider">Active Inventory Count</span>
+         </div>
+       </div>
+    </div>
+  </div>
 
-  <table class="table table-striped table-hover align-middle">
-   <thead class="table-header">
-  <tr>
-    <th class="text-center"><i class="bi bi-hash me-1"></i> ID</th>
-    <th class="text-center"><i class="bi bi-capsule me-1"></i> Drug Name</th>
-    <th class="text-center"><i class="bi bi-box-seam me-1"></i> Stock</th>
-    <th class="text-center"><i class="bi bi-gear me-1"></i> Action</th>
-  </tr>
-</thead>
+  <div class="card border-0 shadow-2xl rounded-5 bg-white overflow-hidden p-0 mb-5 animate-fade-in">
+    <div class="card-header bg-white border-0 p-5 px-lg-5 pb-0">
+       <div class="d-flex align-items-center">
+         <div class="bg-dark text-white p-3 rounded-4 me-4 shadow-lg">
+            <i class="bi bi-prescription fs-3"></i>
+         </div>
+         <h4 class="mb-0 fw-bold">Stock Registry Dashboard</h4>
+       </div>
+    </div>
 
-    <tbody>
-      <tr *ngFor="let medicine of medicines">
-        <td>{{ medicine.id }}</td>
-        <td>{{ medicine.drugName }}</td>
-        <td>{{ medicine.stock }}</td>
-        <td class="text-center">
-          <div class="d-flex justify-content-center">
-            <button
-              (click)="updateMedicine(medicine.id)"
-              class="btn btn-info d-flex align-items-center me-2"
-            >
-              <i class="bi bi-pencil-square me-1"></i> Update
-            </button>
-            <button
-              (click)="deleteMedicine(medicine.id)"
-              class="btn btn-danger d-flex align-items-center"
-            >
-              <i class="bi bi-trash me-1"></i> Delete
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="card-body p-5">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 text-nowrap mt-n3">
+          <thead class="bg-light text-muted fw-bold">
+            <tr>
+              <th class="ps-5 py-4 border-0 text-uppercase small ls-1">ITEM CODE</th>
+              <th class="py-4 border-0 text-uppercase small ls-1">PHARMACEUTICAL ENTITY</th>
+              <th class="py-4 border-0 text-uppercase small ls-1 text-center">QUANTITY / STOCK</th>
+              <th class="pe-5 text-center py-4 border-0 text-uppercase small ls-1">OPERATIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let medicine of medicines" class="border-bottom border-light">
+              <td class="ps-5 fw-bold text-muted">#INV-{{ medicine.id }}</td>
+              <td class="p-4">
+                <div class="d-flex align-items-center">
+                  <div class="bg-primary-subtle text-primary rounded-4 p-3 fw-bold me-4 shadow-sm" style="width: 54px; height: 54px; display: flex; align-items: center; justify-content: center;">
+                    <i class="bi bi-capsule"></i>
+                  </div>
+                  <div>
+                    <div class="fw-bold text-dark fs-5 mb-0">{{ medicine.drugName }}</div>
+                    <div class="text-muted small fw-medium">Sanjivani Global Formula</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center">
+                 <span 
+                   class="badge px-4 py-2 rounded-pill fw-bold fs-7 shadow-sm"
+                   [ngClass]="{
+                     'bg-danger': medicine.stock < 50,
+                     'bg-warning text-dark': medicine.stock >= 50 && medicine.stock < 200,
+                     'bg-success': medicine.stock >= 200
+                   }">
+                   {{ medicine.stock }} Units Remaining
+                 </span>
+              </td>
+              <td class="pe-5 text-center">
+                 <div class="d-flex justify-content-center gap-2">
+                    <button
+                      (click)="updateMedicine(medicine.id)"
+                      class="btn btn-outline-primary btn-sm rounded-pill px-4 border-2 fw-bold"
+                    >
+                      <i class="bi bi-pencil-square"></i> Adjust
+                    </button>
+                    <button
+                      (click)="deleteMedicine(medicine.id)"
+                      class="btn btn-outline-danger btn-sm rounded-pill px-4 border-2 fw-bold"
+                    >
+                      <i class="bi bi-trash3"></i> Delete
+                    </button>
+                 </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

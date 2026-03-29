@@ -2,99 +2,77 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 />
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#">
-      <i class="bi bi-hospital me-2"></i> SANJIVANI HOSPITALS
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/home">
-            <i class="bi bi-house-door me-1"></i> Home
-          </a>
-        </li>
-      </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg py-3">
+  <div class="container-fluid px-lg-5">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <i class="bi bi-capsule-fill me-3 text-info fs-3"></i> SANJIVANI <span class="ms-1 fw-bold text-uppercase">Logistics</span>
+    </a>
+    <div class="ms-auto d-flex gap-3">
+        <a class="btn btn-outline-light text-white rounded-pill px-4 fw-bold border-2 d-flex align-items-center gap-2" routerLink="/medicinelist">
+          <i class="bi bi-arrow-left-circle fs-5"></i> Return to Stock
+        </a>
     </div>
   </div>
 </nav>
 
-<!-- Form -->
-<div class="container mt-5" style="padding-top: 70px">
-  <h3 class="mb-4">
-    <i class="bi bi-pencil-square me-2 text-primary"></i> Update Medicine
-  </h3>
+<div class="container py-5 animate-fade-in" style="max-width: 900px;">
+  <div class="row g-4 align-items-start">
+    <div class="col-lg-12">
+      <div class="d-flex align-items-center justify-content-between mb-5 px-3">
+        <div>
+          <h2 class="fw-bold tracking-tight text-dark mb-1">
+            <i class="bi bi-gear-fill me-2 text-info"></i> Adjust Medicine Metadata
+          </h2>
+          <p class="text-secondary opacity-75 fs-5">Updating stock units for drug ID: <strong class="text-info">#{{medicine.id}}</strong></p>
+        </div>
+        <div class="bg-info-subtle text-info p-4 rounded-circle shadow-lg">
+          <i class="bi bi-pencil-square fs-1"></i>
+        </div>
+      </div>
 
-  <form (ngSubmit)="onSubmit()" class="p-4 border rounded shadow-sm bg-light">
-    <!-- ID -->
-    <div class="mb-3">
-      <label for="id" class="form-label">ID</label>
-      <div class="input-group">
-        <span class="input-group-text"><i class="bi bi-hash"></i></span>
-        <input
-          type="number"
-          class="form-control"
-          [(ngModel)]="medicine.id"
-          id="id"
-          name="id"
-          placeholder="Enter ID"
-          required
-        />
+      <div class="card p-5 border-0 shadow-2xl bg-white rounded-5 animate-fade-in mx-3">
+        <form (ngSubmit)="onSubmit()" class="needs-validation">
+          <div class="row g-5">
+            
+            <div class="col-12">
+              <label class="form-label fw-bold text-muted small text-uppercase ls-wide">Drug Entity Identity</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-4"><i class="bi bi-capsule-pill fs-5"></i></span>
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 py-3 shadow-none fw-bold text-muted"
+                  id="drugName"
+                  [(ngModel)]="medicine.drugName"
+                  name="drugName"
+                  readonly
+                />
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label fw-bold text-muted small text-uppercase ls-wide">Revised Quantity Density</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-4"><i class="bi bi-box-seam fs-3 text-info"></i></span>
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 py-4 shadow-none fs-1 fw-bold text-center text-info"
+                  id="stock"
+                  [(ngModel)]="medicine.stock"
+                  name="stock"
+                  placeholder="000"
+                />
+              </div>
+            </div>
+
+            <div class="col-12 mt-5">
+              <button class="btn btn-info w-100 py-3 rounded-pill d-flex align-items-center justify-content-center gap-2 shadow-2xl text-dark fw-bold" type="submit">
+                <i class="bi bi-check-circle-fill fs-4"></i> SYNC REVISED STOCK TO DATABASE
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-
-    <!-- Drug Name -->
-    <div class="mb-3">
-      <label for="drugName" class="form-label">Drug Name</label>
-      <div class="input-group">
-        <span class="input-group-text"><i class="bi bi-capsule"></i></span>
-        <input
-          type="text"
-          class="form-control"
-          [(ngModel)]="medicine.drugName"
-          id="drugName"
-          name="drugName"
-          placeholder="Enter Drug Name"
-          required
-        />
-      </div>
-    </div>
-
-    <!-- Stock -->
-    <div class="mb-3">
-      <label for="stock" class="form-label">Stock</label>
-      <div class="input-group">
-        <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
-        <input
-          type="number"
-          class="form-control"
-          [(ngModel)]="medicine.stock"
-          id="stock"
-          name="stock"
-          placeholder="Enter Stock Quantity"
-          required
-        />
-      </div>
-    </div>
-
-    <!-- Submit Button Centered -->
-    <div class="d-flex justify-content-center">
-      <button type="submit" class="btn btn-warning">
-        <i class="bi bi-check-circle me-1"></i> Update
-      </button>
-    </div>
-  </form>
+  </div>
 </div>

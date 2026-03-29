@@ -3,85 +3,93 @@
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 />
 
-<nav style="margin: auto" class="navbar navbar-expand-lg bg-dark">
-  <a style="color: white" class="navbar-brand" href="#">
-    <i class="bi bi-hospital me-2"></i> APOLLO HOSPITALS
-  </a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a
-          style="color: white"
-          class="nav-link active"
-          aria-current="page"
-          routerLink="/medicinelist"
-        >
-          <i class="bi bi-arrow-left-circle me-1"></i> Back
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg py-3">
+  <div class="container-fluid px-lg-5">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <i class="bi bi-capsule-fill me-3 text-info fs-3"></i> SANJIVANI <span class="ms-1 fw-bold text-uppercase">Stock Manager</span>
+    </a>
+    <div class="ms-auto d-flex gap-3">
+        <a class="btn btn-outline-light text-white rounded-pill px-4 fw-bold border-2 d-flex align-items-center gap-2" routerLink="/medicinelist">
+          <i class="bi bi-arrow-left-circle fs-5"></i> Back to Inventory
         </a>
-      </li>
-    </ul>
+    </div>
   </div>
 </nav>
 
-<div class="container" style="padding-top: 20px;">
-  <hr />
-  <h3><i class="bi bi-capsule-pill me-2"></i> Add Medicine</h3>
-  <form (ngSubmit)="onSubmit()">
-    <!-- ID -->
-    <div class="input-group mb-3">
-      <span class="input-group-text"><i class="bi bi-hash"></i></span>
-      <input
-        type="number"
-        class="form-control"
-        [(ngModel)]="medicine.id"
-        id="id"
-        name="id"
-        placeholder="Enter ID"
-      />
-    </div>
+<div class="container py-5 animate-fade-in" style="max-width: 900px;">
+  <div class="row g-4 align-items-start">
+    <div class="col-lg-12">
+      <div class="d-flex align-items-center justify-content-between mb-5">
+        <div>
+          <h2 class="fw-bold tracking-tight text-dark mb-1">
+            <i class="bi bi-box-fill me-2 text-primary"></i> Register New Drug Supply
+          </h2>
+          <p class="text-secondary opacity-75 fs-5">Expanding pharmaceutical database with new distribution records.</p>
+        </div>
+        <div class="bg-primary-subtle text-primary p-4 rounded-5">
+          <i class="bi bi-capsule fs-1"></i>
+        </div>
+      </div>
 
-    <!-- Drug Name -->
-    <div class="input-group mb-3">
-      <span class="input-group-text"><i class="bi bi-capsule"></i></span>
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="medicine.drugName"
-        id="drugName"
-        name="drugName"
-        placeholder="Enter Drug Name"
-      />
-    </div>
+      <div class="card p-5 border-0 shadow-2xl bg-white rounded-5 animate-fade-in">
+        <form (ngSubmit)="onSubmit()" class="needs-validation">
+          <div class="row g-5">
+            
+            <div class="col-md-4">
+              <label class="form-label fw-bold text-muted small text-uppercase ls-wide">Inventory Code Tag</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-4"><i class="bi bi-hash fs-5"></i></span>
+                <input
+                  type="number"
+                  class="form-control bg-light border-0 py-3 shadow-none fw-bold"
+                  id="id"
+                  [(ngModel)]="medicine.id"
+                  name="id"
+                  placeholder="ID#"
+                />
+              </div>
+            </div>
 
-    <!-- Stock -->
-    <div class="input-group mb-3">
-      <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="medicine.stock"
-        id="stock"
-        name="stock"
-        placeholder="Enter Stock"
-      />
-    </div>
+            <div class="col-md-8">
+              <label class="form-label fw-bold text-muted small text-uppercase ls-wide">Clinical Pharmaceutical Entity</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-4"><i class="bi bi-capsule fs-5"></i></span>
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 py-3 shadow-none fw-medium"
+                  id="drugName"
+                  [(ngModel)]="medicine.drugName"
+                  name="drugName"
+                  placeholder="Generic / Brand Name"
+                  required
+                />
+              </div>
+            </div>
 
-    <!-- Submit button centered -->
-    <div class="d-flex justify-content-center">
-      <button type="submit" class="btn btn-success">
-        <i class="bi bi-check-circle me-1"></i> Add Medicine
-      </button>
+            <div class="col-12">
+              <label class="form-label fw-bold text-muted small text-uppercase ls-wide">Arrival Stock Density Units</label>
+              <div class="input-group shadow-sm rounded-4 overflow-hidden border">
+                <span class="input-group-text bg-white border-0 px-4"><i class="bi bi-box-seam fs-3 text-primary"></i></span>
+                <input
+                  type="text"
+                  class="form-control bg-white border-0 py-4 shadow-none fs-4 fw-bold text-center"
+                  id="stock"
+                  [(ngModel)]="medicine.stock"
+                  name="stock"
+                  placeholder="000"
+                />
+              </div>
+              <p class="small text-muted text-center mt-3 fw-medium">Quantity currently registered to arrive in central supply node.</p>
+            </div>
+
+            <div class="col-12 mt-4">
+              <button class="btn btn-primary w-100 py-3 rounded-pill d-flex align-items-center justify-content-center gap-2 shadow-2xl transition-all" type="submit">
+                <i class="bi bi-plus-circle-fill fs-4"></i> COMMITT STOCK LOG TO PHARMACY
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-  </form>
+  </div>
 </div>

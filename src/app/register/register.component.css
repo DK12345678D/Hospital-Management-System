@@ -1,0 +1,10 @@
+.animate-slide-up-slow { animation: slideUp 0.8s ease-out; }
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.letter-spacing-1 { letter-spacing: 0.05em; }
+.text-xs { font-size: 0.7rem; }
+.py-2-5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+.shadow-inner { box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); }
+.tracking-tightest { letter-spacing: -0.05em; }
+.transition-all { transition: all 0.3s ease; }
+.btn-dark:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(0,0,0,0.4); }

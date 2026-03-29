@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
 })
 export class AdminloginComponent implements OnInit {
 
-  username2 = 'user'
+  username2 = ''
   password2 = ''
   invalidLogin = false
+  loading = false
 
   constructor(private router:Router, public loginservice: AdminauthService) { }
 
@@ -19,18 +20,20 @@ export class AdminloginComponent implements OnInit {
   }
 
   checkLogin() {
-    if (this.loginservice.authenticate(this.username2, this.password2)
-    ) {
-      this.router.navigate(['admindash'])
-      
-      this.invalidLogin = false
-    } else
-    {
-      this.invalidLogin = true
-      alert("Wrong Credentials");
-      this.router.navigate(['home'])
-    }
-      
+    this.loading = true;
+    this.loginservice.authenticate(this.username2, this.password2).subscribe({
+      next: (res) => {
+        console.log("Admin Login successful", res);
+        this.loading = false;
+        this.invalidLogin = false;
+        this.router.navigate(['admindash']);
+      },
+      error: (err) => {
+        console.error("Admin Login failed", err);
+        this.loading = false;
+        this.invalidLogin = true;
+      }
+    });
   }
 
 }

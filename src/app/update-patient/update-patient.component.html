@@ -1,175 +1,165 @@
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 />
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#">
-      <i class="bi bi-hospital me-2"></i> SANJIVANI HOSPITALS
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <i class="bi bi-hospital me-2 text-info fs-4"></i> SANJIVANI <span class="ms-1 fw-light">HOSPITALS</span>
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="ms-auto">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center fw-semibold text-white px-3" routerLink="/docdash">
+             <i class="bi bi-arrow-left-circle-fill me-2 fs-5"></i> Back to Queue
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 
-<!-- Form Container -->
-<div class="container mt-5" style="padding-top: 70px;">
-  <div class="col-md-6 mx-auto">
-    <h3 class="mb-4">
-      <i class="bi bi-person-badge me-2 text-primary"></i> Update Patient
-    </h3>
-
-    <form (ngSubmit)="onSubmit()" class="p-4 border rounded shadow-sm bg-light">
-      <!-- ID -->
-      <div class="mb-3">
-        <label for="id" class="form-label">ID</label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-hash"></i></span>
-          <input
-            type="number"
-            class="form-control"
-            id="id"
-            [(ngModel)]="patient.id"
-            name="id"
-            placeholder="Enter ID"
-          />
+<div class="container py-5 animate-fade-in" style="max-width: 900px;">
+  <div class="row g-4 align-items-start">
+    <div class="col-lg-12">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+          <h2 class="fw-bold tracking-tight text-dark mb-1">
+            <i class="bi bi-pencil-square me-2 text-primary"></i> Modify Patient Record
+          </h2>
+          <p class="text-secondary opacity-75">Updating medical documentation for patient ID: <strong>#{{patient.id}}</strong></p>
+        </div>
+        <div class="bg-primary-subtle text-primary p-3 rounded-4">
+          <i class="bi bi-database-up fs-3"></i>
         </div>
       </div>
 
-      <!-- Name -->
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-person"></i></span>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            [(ngModel)]="patient.name"
-            name="name"
-            placeholder="Enter Name"
-          />
-        </div>
-      </div>
+      <div class="card p-5 border-0 shadow-xl bg-white rounded-5">
+        <form (ngSubmit)="onSubmit()" class="needs-validation">
+          <div class="row g-4">
+            
+            <!-- Patient Name -->
+            <div class="col-12">
+              <label class="form-label fw-bold text-muted small text-uppercase ls-wide">Full Legal Name</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-4"><i class="bi bi-person-circle fs-5"></i></span>
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 py-3 shadow-none fw-medium"
+                  [(ngModel)]="patient.name"
+                  name="name"
+                  placeholder="e.g. Rahul Kumar"
+                  required
+                />
+              </div>
+            </div>
 
-      <!-- Age -->
-      <div class="mb-3">
-        <label for="age" class="form-label">Age</label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
-          <input
-            type="number"
-            class="form-control"
-            id="age"
-            [(ngModel)]="patient.age"
-            name="age"
-            placeholder="Enter Age"
-          />
-        </div>
-      </div>
+            <div class="col-md-4">
+              <label class="form-label fw-bold text-muted small text-uppercase">Recorded Age</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-calendar3 fs-5"></i></span>
+                <input
+                  type="number"
+                  class="form-control bg-light border-0 py-3 shadow-none fw-medium"
+                  [(ngModel)]="patient.age"
+                  name="age"
+                  placeholder="Years"
+                />
+              </div>
+            </div>
 
-      <!-- Blood Type -->
-      <div class="mb-3">
-        <label for="blood" class="form-label">Blood Type</label>
-        <div class="input-group">
-          <span class="input-group-text"
-            ><i class="bi bi-droplet-half"></i
-          ></span>
-          <input
-            type="text"
-            class="form-control"
-            id="blood"
-            [(ngModel)]="patient.blood"
-            name="blood"
-            placeholder="Enter Blood Type"
-          />
-        </div>
-      </div>
+            <div class="col-md-4">
+              <label class="form-label fw-bold text-muted small text-uppercase">Serology / Blood</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-droplet-half fs-5 text-danger"></i></span>
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 py-3 shadow-none fw-medium"
+                  [(ngModel)]="patient.blood"
+                  name="blood"
+                  placeholder="Group"
+                />
+              </div>
+            </div>
 
-      <!-- Prescription -->
-      <div class="mb-3">
-        <label for="prescription" class="form-label">Prescription</label>
-        <div class="input-group">
-          <span class="input-group-text"
-            ><i class="bi bi-journal-medical"></i
-          ></span>
-          <input
-            type="text"
-            class="form-control"
-            id="prescription"
-            [(ngModel)]="patient.prescription"
-            name="prescription"
-            placeholder="Enter Prescription"
-          />
-        </div>
-      </div>
+            <div class="col-md-4">
+              <label class="form-label fw-bold text-muted small text-uppercase">Financial Status</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-cash-stack fs-5 text-success"></i></span>
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 py-3 shadow-none fw-medium"
+                  [(ngModel)]="patient.fees"
+                  name="fees"
+                  placeholder="Fees Paid"
+                />
+              </div>
+            </div>
 
-      <!-- Dosage -->
-      <div class="mb-3">
-        <label for="dose" class="form-label">Dosage</label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-capsule"></i></span>
-          <input
-            type="text"
-            class="form-control"
-            id="dose"
-            [(ngModel)]="patient.dose"
-            name="dose"
-            placeholder="Enter Dosage"
-          />
-        </div>
-      </div>
+            <div class="col-12">
+              <label class="form-label fw-bold text-muted small text-uppercase">Diagnosis & Prescription Path</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-4"><i class="bi bi-clipboard2-pulse fs-5 text-primary"></i></span>
+                <textarea
+                  class="form-control bg-light border-0 py-3 shadow-none fw-medium"
+                  rows="3"
+                  [(ngModel)]="patient.prescription"
+                  name="prescription"
+                  placeholder="Clinical findings and medication steps..."
+                ></textarea>
+              </div>
+            </div>
 
-      <!-- Fees -->
-      <div class="mb-3">
-        <label for="fees" class="form-label">Fees</label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-cash-stack"></i></span>
-          <input
-            type="text"
-            class="form-control"
-            id="fees"
-            [(ngModel)]="patient.fees"
-            name="fees"
-            placeholder="Enter Fees"
-          />
-        </div>
-      </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold text-muted small text-uppercase">Defined Medication Dose</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-4"><i class="bi bi-capsule fs-5"></i></span>
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 py-3 shadow-none fw-medium"
+                  [(ngModel)]="patient.dose"
+                  name="dose"
+                  placeholder="e.g. 500mg BID"
+                />
+              </div>
+            </div>
 
-      <!-- Urgency -->
-      <div class="mb-3">
-        <label for="urgency" class="form-label">Urgency</label>
-        <div class="input-group">
-          <span class="input-group-text"
-            ><i class="bi bi-exclamation-triangle"></i
-          ></span>
-          <input
-            type="text"
-            class="form-control"
-            id="urgency"
-            [(ngModel)]="patient.urgency"
-            name="urgency"
-            placeholder="Enter Urgency Level"
-          />
-        </div>
-      </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold text-muted small text-uppercase">Case Escalation Level</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-4"><i class="bi bi-exclamation-octagon fs-5 text-warning"></i></span>
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 py-3 shadow-none fw-medium"
+                  [(ngModel)]="patient.urgency"
+                  name="urgency"
+                  placeholder="Escalate or Normal"
+                />
+              </div>
+            </div>
 
-      <!-- Submit Button Centered -->
-      <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-warning">
-          <i class="bi bi-check-circle me-1"></i> Update
-        </button>
+            <div class="col-12">
+              <label class="form-label fw-bold text-muted small text-uppercase">Last Known Interaction Date</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 px-4"><i class="bi bi-calendar-event fs-5"></i></span>
+                <input
+                  type="date"
+                  class="form-control bg-light border-0 py-3 shadow-none fw-medium"
+                  [(ngModel)]="patient.latestVisit"
+                  name="latestVisit"
+                />
+              </div>
+            </div>
+
+            <div class="col-12 mt-4 pt-3">
+              <button class="btn btn-primary w-100 py-3 rounded-pill d-flex align-items-center justify-content-center gap-2 shadow-lg" type="submit">
+                <i class="bi bi-check2-all fs-4"></i> COMMITT UPDATE TO RECORDS
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 </div>

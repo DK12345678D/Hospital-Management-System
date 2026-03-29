@@ -1,84 +1,104 @@
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 />
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <i class="bi bi-hospital me-2"></i> SANJIVANI HOSPITALS
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active text-white" routerLink="/docdash">
-            <i class="bi bi-arrow-left-circle me-1"></i> Back
-          </a>
-        </li>
-      </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg py-3">
+  <div class="container-fluid px-lg-5">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <i class="bi bi-person-heart me-3 text-info fs-3"></i> SANJIVANI <span class="ms-1 fw-bold text-uppercase">Diagnosis</span>
+    </a>
+    <div class="ms-auto">
+      <a class="btn btn-outline-info d-flex align-items-center gap-2 border-2 px-4 rounded-pill shadow-none" routerLink="/docdash">
+        <i class="bi bi-arrow-left"></i> Return to Queue
+      </a>
     </div>
   </div>
 </nav>
-<div class="container mt-5 pt-4" style="padding-top: 70px;">
-  <h3 class="mb-4 d-flex align-items-center">
-    <i class="bi bi-file-medical-fill me-2 text-danger"></i>
-    Patient Diagnosis Details
-  </h3>
 
-  <div class="card shadow-sm border-0 rounded-3">
-    <div class="card-body  posistion-center">
-      <table class="table table-bordered align-middle">
-        <tbody>
-          <tr>
-            <th scope="row" class="w-25">
-              <i class="bi bi-person-circle me-2 text-primary"></i> Name
-            </th>
-            <td>{{ patient.name }}</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <i class="bi bi-calendar2-event-fill me-2 text-warning"></i> Age
-            </th>
-            <td>{{ patient.age }}</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <i class="bi bi-droplet-half me-2 text-danger"></i> Blood Type
-            </th>
-            <td>{{ patient.blood }}</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <i class="bi bi-capsule-pill me-2 text-success"></i> Dosage
-            </th>
-            <td>{{ patient.dose }}</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <i class="bi bi-exclamation-triangle-fill me-2 text-danger"></i> Urgency
-            </th>
-            <td>{{ patient.urgency }}</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <i class="bi bi-journal-medical me-2 text-info"></i> Diagnosis & Prescription
-            </th>
-            <td>{{ patient.prescription }}</td>
-          </tr>
-        </tbody>
-      </table>
+<div class="container py-5 animate-fade-in" style="max-width: 1000px;">
+  <div class="card border-0 shadow-2xl rounded-5 bg-white overflow-hidden p-0 mb-5">
+    <div class="row g-0 flex-column flex-lg-row">
+      
+      <!-- Patient Summary Sidebar (Visual) -->
+      <div class="col-lg-4 bg-primary text-white p-5 d-flex flex-column align-items-center justify-content-center text-center">
+        <div class="bg-white text-primary rounded-circle p-4 mb-4 shadow-xl" style="width: 120px; height: 120px; display: flex; align-items: center; justify-content: center;">
+          <h1 class="display-3 fw-bold mb-0">{{patient.name.charAt(0) || 'P'}}</h1>
+        </div>
+        <h2 class="fw-bold mb-1">{{patient.name}}</h2>
+        <p class="opacity-75 mb-4">Case Identification: #{{patient.id}}</p>
+        
+        <div class="d-flex flex-wrap gap-2 justify-content-center">
+          <span class="badge bg-white text-primary px-3 py-2 rounded-pill fw-bold border-0">{{patient.age}} Years</span>
+          <span class="badge bg-danger text-white px-3 py-2 rounded-pill fw-bold border-0">{{patient.blood}} Blood</span>
+          <span class="badge bg-info text-dark px-3 py-2 rounded-pill fw-bold border-0">{{patient.urgency}}</span>
+        </div>
+      </div>
+
+      <!-- Clinical Findings -->
+      <div class="col-lg-8 p-5">
+        <div class="d-flex align-items-center mb-5 pb-3 border-bottom border-light">
+           <div class="bg-primary-subtle text-primary p-3 rounded-4 me-4">
+              <i class="bi bi-file-medical fs-3"></i>
+           </div>
+           <div>
+             <h3 class="fw-bold text-dark mb-1">Clinical Case Review</h3>
+             <p class="text-secondary small mb-0 fw-medium text-uppercase ls-1">Comprehensive Pathological Findings</p>
+           </div>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-md-6">
+            <label class="form-label fw-bold text-muted small text-uppercase ls-1">Financial Obligation</label>
+            <div class="d-flex align-items-center bg-light p-3 rounded-4 border border-light">
+              <i class="bi bi-currency-dollar text-success fs-3 me-3"></i>
+              <div>
+                <div class="fw-bold text-dark fs-5">{{patient.fees}}</div>
+                <div class="small text-muted">Paid Medical Fees</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-bold text-muted small text-uppercase ls-1">Latest Patient Scan</label>
+            <div class="d-flex align-items-center bg-light p-3 rounded-4 border border-light">
+              <i class="bi bi-calendar-event text-info fs-3 me-3"></i>
+              <div>
+                <div class="fw-bold text-dark fs-5">{{patient.latestVisit || 'New Entry'}}</div>
+                <div class="small text-muted">Last Clinical Interaction</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label fw-bold text-muted small text-uppercase ls-1">Diagnostic Intelligence & Protocol</label>
+            <div class="bg-light p-4 rounded-4 border border-light position-relative overflow-hidden">
+               <div class="position-absolute opacity-5 end-0 top-0 mt-2 me-2">
+                  <i class="bi bi-clipboard-pulse" style="font-size: 5rem;"></i>
+               </div>
+               <div class="position-relative z-index-1">
+                 <h5 class="fw-bold text-primary mb-3"><i class="bi bi-capsule me-2"></i> Current Prescription</h5>
+                 <p class="fs-5 text-dark fw-medium mb-4 lh-base" style="word-wrap: break-word;">
+                   {{patient.prescription || 'No clinical findings recorded yet.'}}
+                 </p>
+                 <div class="d-flex align-items-center bg-white p-3 rounded-3 shadow-sm d-inline-flex border-start border-success border-4">
+                    <i class="bi bi-info-circle-fill text-success fs-5 me-3"></i>
+                    <div>
+                      <span class="text-muted small fw-bold text-uppercase">Dosage Schedule:</span>
+                      <span class="ms-2 fw-bold text-dark">{{patient.dose || 'Standard Protocol'}}</span>
+                    </div>
+                 </div>
+               </div>
+            </div>
+          </div>
+          
+          <div class="col-12 mt-5 text-center">
+             <button class="btn btn-primary d-flex align-items-center gap-2 px-5 py-3 rounded-pill mx-auto shadow-lg" routerLink="/docdash">
+               <i class="bi bi-check2-circle fs-4"></i> DISMISS RECORD VIEW
+             </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

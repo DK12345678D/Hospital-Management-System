@@ -3,108 +3,133 @@
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 />
 
-<nav style="margin: auto" class="navbar navbar-expand-lg bg-dark">
-  <a style="color: white" class="navbar-brand" href="#">
-    <i class="bi bi-hospital me-2"></i> SANJIVANI HOSPITALS
-  </a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a
-          style="color: white"
-          class="nav-link active"
-          aria-current="page"
-          href="javascript:void(0);"
-          routerLink="/appointmentlist"
-        >
-          <i class="bi bi-calendar-check me-1"></i> Appointments
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-3">
+  <div class="container-fluid px-lg-5">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <i class="bi bi-hospital me-2 text-info fs-3"></i> SANJIVANI <span class="ms-1 fw-bold text-uppercase">Admin</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 gap-lg-3">
+        <li class="nav-item">
+          <a class="nav-link active fw-medium d-flex align-items-center" routerLink="/appointmentlist">
+            <i class="bi bi-calendar-range me-2"></i> Scheduling
+          </a>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center gap-3">
+        <div class="text-end text-white-50 d-none d-lg-block me-2 small">
+          <div class="fw-bold text-white mb-0">Administrator Access</div>
+          <div class="small">Sanjivani Central Node</div>
+        </div>
+        <a class="btn btn-outline-danger d-flex align-items-center gap-2 border-2 px-4 shadow-none" routerLink="/home">
+          <i class="bi bi-power"></i> Secure Exit
         </a>
-      </li>
-    </ul>
-
-    <div class="mx-2">
-      <button
-        style="margin: 5px"
-        class="btn btn-danger d-flex align-items-center"
-        data-toggle="modal"
-        data-target="#loginModal"
-      >
-        <i class="bi bi-box-arrow-right me-1"></i>
-        <a style="color: white; text-decoration: none" routerLink="/home">
-          Logout
-        </a>
-      </button>
+      </div>
     </div>
   </div>
 </nav>
-<div class="container " style="padding-top: 70px;"> <!-- Added margin-top -->
-  <hr />
-  <h2><i class="bi bi-speedometer2 me-2"></i> Admin Dashboard</h2>
-  <p style="color: rgb(86, 86, 86); font-size: large">
-    <marquee behavior="scroll" direction="left">
-      Welcome to Admin Dashboard. Please find the patient list below!
-      Click <b>Appointments</b> to view and update Appointments,
-      or <b>Add Appointment</b> to register new patients.
-    </marquee>
-  </p>
-  <hr />
 
-
-  <div class="input-group mb-3">
-    <span class="input-group-text"><i class="bi bi-search"></i></span>
-    <input
-      type="text"
-      name="search"
-      [(ngModel)]="searchText"
-      class="form-control"
-      placeholder="Search patients..."
-    />
+<div class="container-fluid px-lg-5 py-5 animate-fade-in">
+  <div class="row g-4 mb-5">
+    <div class="col-12 col-md-8">
+      <h2 class="fw-bold text-dark display-6 mb-1">Clinic Operations Control</h2>
+      <p class="text-secondary fs-5 opacity-75">Overview of registered patients and appointment coordination.</p>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card p-3 border-0 shadow-sm bg-white hover-up d-flex flex-row align-items-center">
+        <div class="bg-primary-subtle text-primary p-3 rounded-4 me-3">
+          <i class="bi bi-people-fill fs-3"></i>
+        </div>
+        <div>
+          <h4 class="fw-bold mb-0">{{patients.length || 0}}</h4>
+          <span class="text-muted small fw-semibold text-uppercase ls-1">Record Registry</span>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <h4 class="text-secondary">
-    <i class="bi bi-people-fill me-2"></i> Current Patient List in the Queue
-  </h4>
+  <div class="card border-0 shadow-lg rounded-5 bg-white overflow-hidden p-0 mb-5">
+    <div class="card-header bg-white border-bottom border-light p-4 px-lg-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+       <div class="d-flex align-items-center">
+         <div class="bg-info-subtle text-info p-2 rounded-3 me-3">
+            <i class="bi bi-list-columns-reverse fs-4"></i>
+         </div>
+         <h4 class="mb-0 fw-bold">Patient Records</h4>
+       </div>
+       <div class="input-group" style="max-width: 400px;">
+          <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-search text-muted"></i></span>
+          <input
+            type="text"
+            name="search"
+            [(ngModel)]="searchText"
+            class="form-control bg-light border-0 py-2 shadow-none"
+            placeholder="Identity scan..."
+          />
+       </div>
+    </div>
 
-  <div class="tableFixHead mt-3">
-    <table class="table table-striped table-hover">
-      <thead class="table-header">
-        <tr>
-          <th><i class="bi bi-hash"></i> ID</th>
-          <th><i class="bi bi-person"></i> Name</th>
-          <th><i class="bi bi-calendar-heart"></i> Age</th>
-          <th><i class="bi bi-cash-coin"></i> Fees</th>
-          <th><i class="bi bi-exclamation-triangle"></i> Urgency</th>
-          <th><i class="bi bi-gear"></i> Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let patient of patients | filter : searchText">
-          <td>{{ patient.id }}</td>
-          <td>{{ patient.name }}</td>
-          <td>{{ patient.age }}</td>
-          <td>{{ patient.fees }}</td>
-          <td>{{ patient.urgency }}</td>
-          <td>
-            <button
-              (click)="deletePatient(patient.id)"
-              class="btn btn-danger d-flex align-items-center"
-            >
-              <i class="bi bi-trash me-1"></i> Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 text-nowrap">
+          <thead class="bg-light text-muted fw-bold">
+            <tr>
+              <th class="ps-5 py-3 border-0">IDENTIFIER</th>
+              <th class="py-3 border-0">PATIENT ENTITY</th>
+              <th class="py-3 border-0">AGE RECOGNITION</th>
+              <th class="py-3 border-0">LATEST INTERACTION</th>
+              <th class="py-3 border-0">FINANCE</th>
+              <th class="py-3 border-0">URGENCY BAND</th>
+              <th class="pe-5 text-center py-3 border-0">OPERATIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let patient of patients | filter : searchText" class="border-bottom border-light">
+              <td class="ps-5 fw-bold text-muted small">#{{ patient.id }}</td>
+              <td class="p-3">
+                <div class="d-flex align-items-center">
+                  <div class="bg-dark text-white rounded-circle p-2 px-3 fw-bold me-3 shadow-sm">
+                    {{patient.name?.charAt(0) || 'P'}}
+                  </div>
+                  <div>
+                    <div class="fw-bold text-dark fs-6">{{ patient.name }}</div>
+                    <div class="small text-muted">{{ patient.blood || 'Unknown Blood' }} Group</div>
+                  </div>
+                </div>
+              </td>
+              <td>{{ patient.age }} Years</td>
+              <td>
+                 <span class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill fw-medium border">
+                   <i class="bi bi-calendar-check me-1"></i> {{ patient.latestVisit || 'N/A' }}
+                 </span>
+              </td>
+              <td class="fw-bold text-success">{{ patient.fees }}</td>
+              <td>
+                <span 
+                  class="badge px-3 py-2 rounded-pill fw-bold ls-1"
+                  [ngClass]="{
+                    'bg-danger': patient.urgency?.toLowerCase() === 'emergency',
+                    'bg-warning text-dark': patient.urgency?.toLowerCase() === 'critical',
+                    'bg-primary': patient.urgency?.toLowerCase() === 'moderate',
+                    'bg-success': patient.urgency?.toLowerCase() === 'stable'
+                  }">
+                  {{ patient.urgency ||'NORMAL'}}
+                </span>
+              </td>
+              <td class="pe-5 text-center">
+                <button
+                  (click)="deletePatient(patient.id)"
+                  class="btn btn-outline-danger btn-sm border-2 rounded-pill px-4 hover-filled d-inline-flex align-items-center gap-2"
+                >
+                  <i class="bi bi-trash3-fill"></i> Purge Record
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

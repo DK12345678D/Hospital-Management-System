@@ -1,0 +1,5 @@
+.animate-slide-up { animation: slideUp 0.6s ease-out; }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.letter-spacing-1 { letter-spacing: 0.05em; }
+.text-xs { font-size: 0.7rem; }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1); }

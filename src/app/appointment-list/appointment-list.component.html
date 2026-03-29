@@ -2,79 +2,96 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 />
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <i class="bi bi-hospital me-2"></i> SANJIVANI HOSPITALS
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active text-white" routerLink="/admindash">
-            <i class="bi bi-arrow-left-circle me-1"></i> Back
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active text-white" routerLink="/createappointment">
-            <i class="bi bi-calendar-plus me-1"></i> Add Appointments
-          </a>
-        </li>
-      </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg py-3">
+  <div class="container-fluid px-lg-5">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <i class="bi bi-calendar-check-fill me-3 text-info fs-3"></i> SANJIVANI <span class="ms-1 fw-bold text-uppercase">Appointments</span>
+    </a>
+    <div class="ms-auto d-flex gap-3">
+        <a class="btn btn-outline-light text-white rounded-pill px-4 fw-bold border-2 d-flex align-items-center gap-2" routerLink="/admindash">
+          <i class="bi bi-person-badge fs-5"></i> Back to Patient Admin
+        </a>
+        <a class="btn btn-success text-white rounded-pill px-4 fw-bold shadow-lg d-flex align-items-center gap-2" routerLink="/createappointment">
+          <i class="bi bi-calendar-plus-fill fs-5"></i> New Booking
+        </a>
     </div>
   </div>
 </nav>
 
-<!-- Content -->
-<div class="container mt-4" style="padding-top: 70px;">
-  <h2><i class="bi bi-calendar-check me-2"></i> Appointment List</h2>
+<div class="container-fluid px-lg-5 py-5 animate-fade-in">
+  <div class="row mb-5">
+    <div class="col-12">
+      <h2 class="fw-bold text-dark display-5 mb-2">Centralized Queue System</h2>
+      <p class="text-secondary fs-5 opacity-75">Monitoring active hospital interactions and coordination requests.</p>
+      <hr class="w-100 border-2 opacity-10">
+    </div>
+  </div>
 
-  <p class="text-muted fs-5">
-    Welcome to the appointment list page. Click
-    <span class="fw-bold">Add Appointments</span> to add new appointments.
-  </p>
-  <hr />
+  <div class="card border-0 shadow-2xl rounded-5 bg-white overflow-hidden p-0 mb-5 animate-fade-in">
+    <div class="card-header bg-white border-0 p-5 px-lg-5 pb-0">
+       <div class="d-flex align-items-center">
+         <div class="bg-primary text-white p-3 rounded-4 me-4 shadow-lg">
+            <i class="bi bi-list-task fs-3"></i>
+         </div>
+         <div>
+            <h3 class="mb-0 fw-bold">Active Appointments</h3>
+            <span class="text-muted small fw-bold text-uppercase tracking-widest">{{appointments.length || 0}} Total Entries</span>
+         </div>
+       </div>
+    </div>
 
-  <!-- Table -->
-  <table class="table table-striped table-hover align-middle">
-    <thead class="table-dark">
-      <tr>
-        <th><i class="bi bi-hash"></i> ID</th>
-        <th><i class="bi bi-person"></i> Name</th>
-        <th><i class="bi bi-person-badge"></i> Age</th>
-        <th><i class="bi bi-clipboard2-pulse"></i> Symptoms</th>
-        <th><i class="bi bi-telephone"></i> Number</th>
-        <th><i class="bi bi-gear"></i> Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let appointment of appointments">
-        <td>{{ appointment.id }}</td>
-        <td>{{ appointment.name }}</td>
-        <td>{{ appointment.age }}</td>
-        <td>{{ appointment.symptoms }}</td>
-        <td>{{ appointment.number }}</td>
-        <td>
-          <button
-            (click)="deleteAppointment(appointment.id)"
-            class="btn btn-sm btn-danger d-flex align-items-center"
-          >
-            <i class="bi bi-trash3 me-1"></i> Delete
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="card-body p-5">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 text-nowrap mt-n3">
+          <thead class="bg-light text-muted fw-bold">
+            <tr>
+              <th class="ps-5 py-4 border-0">REF ID</th>
+              <th class="py-4 border-0">IDENTITY</th>
+              <th class="py-4 border-0">AGE RECOGNITION</th>
+              <th class="py-4 border-0">PATHOLOGICAL SYMPTOMS</th>
+              <th class="py-4 border-0">CONTACT NODE</th>
+              <th class="pe-5 text-center py-4 border-0 text-uppercase small ls-1">OPERATIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let appointment of appointments" class="border-bottom border-light">
+              <td class="ps-5 fw-bold text-muted">#{{ appointment.id }}</td>
+              <td class="p-4">
+                <div class="d-flex align-items-center">
+                  <div class="bg-dark text-white rounded-circle p-2 px-3 fw-bold me-3 shadow-sm">
+                    {{appointment.name.charAt(0) || 'A'}}
+                  </div>
+                  <div>
+                    <div class="fw-bold text-dark fs-6">{{ appointment.name }}</div>
+                    <div class="small text-muted">Sanjivani Global Patient</div>
+                  </div>
+                </div>
+              </td>
+              <td class="fw-semibold">{{ appointment.age }} Years</td>
+              <td class="text-wrap" style="max-width: 250px;">
+                <span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-3 fw-bold border border-danger border-opacity-10">
+                  <i class="bi bi-clipboard2-pulse me-1"></i> {{ appointment.symptoms }}
+                </span>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-2">
+                   <div class="bg-light p-2 rounded-circle text-primary"><i class="bi bi-telephone-fill"></i></div>
+                   <div class="fw-bold text-secondary">{{ appointment.number }}</div>
+                </div>
+              </td>
+              <td class="pe-5 text-center">
+                <button
+                  (click)="deleteAppointment(appointment.id)"
+                  class="btn btn-outline-danger btn-sm border-2 rounded-pill px-4 hover-filled d-inline-flex align-items-center gap-2"
+                >
+                  <i class="bi bi-calendar2-minus-fill"></i> Cancel Session
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

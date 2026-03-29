@@ -9,9 +9,10 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class DocloginComponent implements OnInit {
 
-  username = 'user'
-    password = ''
-    invalidLogin = false
+  username = ''
+  password = ''
+  invalidLogin = false
+  loading = false
 
   constructor(private router:Router, public loginservice: AuthenticationService) { }
 
@@ -19,18 +20,20 @@ export class DocloginComponent implements OnInit {
   }
 
   checkLogin() {
-    if (this.loginservice.authenticate(this.username, this.password)
-    ) {
-      this.router.navigate(['docdash'])
-      
-      this.invalidLogin = false
-    } else
-    {
-      this.invalidLogin = true
-      alert("Wrong Credentials");
-      this.router.navigate(['home'])
-    }
-      
+    this.loading = true;
+    this.loginservice.loginDoctor(this.username, this.password).subscribe({
+      next: (res) => {
+        console.log("Login successful", res);
+        this.loading = false;
+        this.invalidLogin = false;
+        this.router.navigate(['docdash']);
+      },
+      error: (err) => {
+        console.error("Login failed", err);
+        this.loading = false;
+        this.invalidLogin = true;
+      }
+    });
   }
 
 }

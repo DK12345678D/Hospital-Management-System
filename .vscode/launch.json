@@ -4,6 +4,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "HospitalApplication",
+      "request": "launch",
+      "mainClass": "app.hospital.HospitalApplication",
+      "projectName": "Backend"
+    },
+    {
+      "type": "java",
       "name": "DocLoginApplication",
       "request": "launch",
       "mainClass": "com.example.doclogin.DocLoginApplication",

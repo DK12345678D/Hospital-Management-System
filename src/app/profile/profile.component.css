@@ -1,0 +1,11 @@
+.animate-fade-in { animation: fadeIn 0.8s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+.letter-spacing-1 { letter-spacing: 0.05rem; }
+.text-xs { font-size: 0.725rem; }
+.py-2-5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+.shadow-2xl { box-shadow: 0 45px 80px -25px rgba(0, 0, 0, 0.18); }
+.tracking-widest { letter-spacing: 0.1em; }
+.tracking-tighter { letter-spacing: -0.05em; }
+.transition-all { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.btn-dark:hover { transform: translateY(-3px); box-shadow: 0 15px 30px -10px rgba(0,0,0,0.5); }
+.group-focus:focus-within { box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.2); }

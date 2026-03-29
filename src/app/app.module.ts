@@ -8,7 +8,7 @@ import { DocloginComponent } from './doclogin/doclogin.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { DocdashComponent } from './docdash/docdash.component';
 import { AdmindashComponent } from './admindash/admindash.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -22,6 +22,12 @@ import { UpdateMedicineComponent } from './update-medicine/update-medicine.compo
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
 import { ViewPatientComponent } from './view-patient/view-patient.component';
+import { AuthInterceptor } from './auth.interceptor';
+import { PatientloginComponent } from './patientlogin/patientlogin.component';
+import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ProfileComponent } from './profile/profile.component';
 
 // const routes: Routes = [
 //   { path: '', component: NewsfeedComponent },
@@ -45,6 +51,11 @@ const routes: Routes = [
   { path: '', component: NewsfeedComponent },
   { path: 'doclogin', component: DocloginComponent },
   { path: 'adlogin', component: AdminloginComponent },
+  { path: 'patientlogin', component: PatientloginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'home', component: NewsfeedComponent },
   { path: 'createpatient', component: CreatepatientComponent },
   { path: 'docdash', component: DocdashComponent },
@@ -64,6 +75,11 @@ const routes: Routes = [
     NewsfeedComponent,
     DocloginComponent,
     AdminloginComponent,
+    PatientloginComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    ProfileComponent,
     DocdashComponent,
     AdmindashComponent,
     CreatepatientComponent,
@@ -83,7 +99,9 @@ const routes: Routes = [
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
