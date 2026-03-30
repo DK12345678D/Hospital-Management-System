@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AppointmentService {
 
-  private baseUrl = `${environment.apiUrl}/api/v3/appointments`;
+  private baseUrl = `${environment.apiUrl}/api/v1/appointments`;
 
 
   constructor(private httpClient: HttpClient) { }
@@ -19,7 +19,7 @@ export class AppointmentService {
   }
 
   createAppointment(appointment: Appointment): Observable<Appointment> {
-    return this.httpClient.post<Appointment>(`${this.baseUrl}`, appointment);
+    return this.httpClient.post<Appointment>(`${this.baseUrl}/book`, appointment);
   }
 
   getAppointmentById(id: number): Observable<Appointment> {   

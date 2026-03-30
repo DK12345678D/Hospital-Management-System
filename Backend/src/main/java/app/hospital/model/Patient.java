@@ -29,7 +29,9 @@ public class Patient {
 
     private String age;
 
-    private String bloodGroup;
+    private String blood;
+    private String dose;
+    private String urgency;
 
     private String email;
 
@@ -46,9 +48,9 @@ public class Patient {
 
     private String latestVisit;
 
-    private Double totalFeesPaid;
+    private String fees;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String password;
 
     private String role = "ROLE_PATIENT";

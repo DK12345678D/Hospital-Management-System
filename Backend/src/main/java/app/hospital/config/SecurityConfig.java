@@ -35,10 +35,10 @@ public class SecurityConfig {
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers("/auth/**", "/v2/api-docs/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/webjars/**")
 						.permitAll()
+						.requestMatchers("/api/v1/**").permitAll()
 						.requestMatchers("/api/admin/**").hasRole("ADMIN")
 						.requestMatchers("/api/doctor/**").hasAnyRole("ADMIN", "DOCTOR")
 						.requestMatchers("/api/patient/**").hasAnyRole("ADMIN", "PATIENT")
-						.requestMatchers("/api/v1/patients/**").hasAnyRole("ADMIN", "DOCTOR", "PATIENT")
 						.anyRequest().authenticated()
 				)
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

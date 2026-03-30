@@ -21,7 +21,6 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/inventory")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class InventoryController {
 
     private final InventoryService inventoryService;

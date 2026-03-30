@@ -6,8 +6,7 @@ import { PatientService } from '../patient.service';
 
 @Component({
   selector: 'app-docdash',
-  templateUrl: './docdash.component.html', 
-  styleUrls: ['./docdash.component.css']
+  templateUrl: './docdash.component.html'
 })
 export class DocdashComponent implements OnInit {
   searchText: string;
@@ -35,6 +34,10 @@ export class DocdashComponent implements OnInit {
 
     this.router.navigate(['updatepatient', id]);
 
+  }
+
+  createPrescription(id: number) {
+    this.router.navigate(['createpres', id]);
   }
 
   deletePatient(id: number) {

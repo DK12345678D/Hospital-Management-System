@@ -8,15 +8,14 @@ import lombok.Data;
 @Data
 @Builder
 public class DashboardResponse {
-    private long totalCandidates;
-    private long onlineCandidates;
-    private long totalQuestions;
-    private long totalTests;
-    private long totalSubjects;
-    private long totalCategories;
-    private long registrationsToday;
-    private long testsStartedToday;
-    private long reportsGeneratedToday;
+    private long totalPatients;
+    private long totalDoctors;
+    private long totalAppointments;
+    private long totalInventoryItems;
+    private long totalBills;
+    private long dailyAdmissions;
+    private long dailyTests;
+    private long dailyReports;
     private List<YearlyStatDTO> yearlyStats;
     private List<MonthlyStatDTO> monthlyStats;
     private List<AuditLogDto> recentActivities;

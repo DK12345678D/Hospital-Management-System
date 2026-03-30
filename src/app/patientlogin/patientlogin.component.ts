@@ -4,8 +4,7 @@ import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-patientlogin',
-  templateUrl: './patientlogin.component.html',
-  styleUrls: ['./patientlogin.component.css']
+  templateUrl: './patientlogin.component.html'
 })
 export class PatientloginComponent implements OnInit {
 

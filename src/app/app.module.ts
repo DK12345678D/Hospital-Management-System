@@ -28,6 +28,8 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PrescriptionListComponent } from './prescription-list/prescription-list.component';
+import { CreatePrescriptionComponent } from './create-prescription/create-prescription.component';
 
 // const routes: Routes = [
 //   { path: '', component: NewsfeedComponent },
@@ -67,6 +69,8 @@ const routes: Routes = [
   { path: 'appointmentlist', component: AppointmentListComponent },
   { path: 'createappointment', component: CreateAppointmentComponent },
   { path: 'viewpatient/:id', component: ViewPatientComponent },
+  { path: 'prescriptions', component: PrescriptionListComponent },
+  { path: 'createpres/:id', component: CreatePrescriptionComponent },
 ];
 
 @NgModule({
@@ -90,6 +94,8 @@ const routes: Routes = [
     AppointmentListComponent,
     CreateAppointmentComponent,
     ViewPatientComponent,
+    PrescriptionListComponent,
+    CreatePrescriptionComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

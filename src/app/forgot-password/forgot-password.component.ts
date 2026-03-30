@@ -4,12 +4,13 @@ import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-forgot-password',
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.css']
+  templateUrl: './forgot-password.component.html'
 })
 export class ForgotPasswordComponent implements OnInit {
 
   email = '';
+  phone = '';
+  resetMethod = 'email'; // Default
 
   constructor(private router: Router, private authService: AuthenticationService) { }
 
@@ -17,15 +18,22 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.forgotPassword(this.email).subscribe({
+    const identifier = this.resetMethod === 'email' ? this.email : this.phone;
+    
+    // Using existing forgotPassword method (assumes it handles identifier string)
+    this.authService.forgotPassword(identifier).subscribe({
       next: (res) => {
-        alert("Rest OTP sent to your registered contact!");
-        this.router.navigate(['reset-password'], { queryParams: { email: this.email } });
+        alert("Reset OTP sent to your registered contact node!");
+        this.router.navigate(['reset-password'], { 
+          queryParams: { 
+            identifier: identifier, 
+            method: this.resetMethod 
+          } 
+        });
       },
       error: (err) => {
-        alert("Error: " + (err.error?.message || "User not found"));
+        alert("Error: " + (err.error?.message || "Identifier not found in system"));
       }
     });
   }
-
 }

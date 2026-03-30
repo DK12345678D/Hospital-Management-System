@@ -3,10 +3,16 @@
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 />
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg py-3">
+  <div class="container-fluid px-lg-5">
     <a class="navbar-brand d-flex align-items-center" routerLink="/home">
-      <i class="bi bi-hospital me-2 text-info"></i> SANJIVANI <span class="ms-1 fw-light">HEALTH</span>
+      <div class="brand-icon brand-circle bg-black text-danger p-2 me-3 shadow-lg border border-danger border-opacity-30" style="width: 44px; height: 44px;">
+        <i class="bi bi-heart-pulse-fill fs-4 text-danger"></i>
+      </div>
+      <div class="lh-1">
+        <div class="fw-bold fs-4 tracking-tight text-white mb-0">SANJIVANI <span class="text-danger fw-light">GLOBAL</span></div>
+        <div class="small fw-light opacity-50 text-uppercase tracking-widest text-danger" style="font-size: 0.65rem;">Precision Enrollment</div>
+      </div>
     </a>
     <div class="ms-auto">
       <ul class="navbar-nav mb-2 mb-lg-0">
@@ -70,13 +76,21 @@
               <label class="form-label fw-semibold mb-2 text-muted small">BLOOD GROUP</label>
               <div class="input-group">
                 <span class="input-group-text bg-white border-0 shadow-sm px-3"><i class="bi bi-droplet-fill fs-5 text-danger"></i></span>
-                <input
-                  type="text"
-                  class="form-control border-0 shadow-sm bg-light"
-                  [(ngModel)]="patient.blood"
+                <select 
+                  class="form-select border-0 shadow-sm bg-light py-2" 
+                  [(ngModel)]="patient.blood" 
                   name="blood"
-                  placeholder="Select/Enter"
-                />
+                  required>
+                  <option value="" disabled selected>Select Group</option>
+                  <option value="A+">A Positive (A+)</option>
+                  <option value="A-">A Negative (A-)</option>
+                  <option value="B+">B Positive (B+)</option>
+                  <option value="B-">B Negative (B-)</option>
+                  <option value="AB+">AB Positive (AB+)</option>
+                  <option value="AB-">AB Negative (AB-)</option>
+                  <option value="O+">O Positive (O+)</option>
+                  <option value="O-">O Negative (O-)</option>
+                </select>
               </div>
             </div>
 

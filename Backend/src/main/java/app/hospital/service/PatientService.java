@@ -31,9 +31,14 @@ public class PatientService {
         
         patient.setName(patientDetails.getName());
         patient.setAge(patientDetails.getAge());
-        patient.setBloodGroup(patientDetails.getBloodGroup());
+        patient.setBlood(patientDetails.getBlood());
+        patient.setDose(patientDetails.getDose());
+        patient.setUrgency(patientDetails.getUrgency());
+        patient.setLatestVisit(patientDetails.getLatestVisit());
+        patient.setFees(patientDetails.getFees());
         patient.setPhone(patientDetails.getPhone());
         patient.setAddress(patientDetails.getAddress());
+        patient.setPrescription(patientDetails.getPrescription());
         patient.setMedicalHistory(patientDetails.getMedicalHistory());
         
         return patientRepository.save(patient);

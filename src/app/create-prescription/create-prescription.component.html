@@ -1,0 +1,56 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card border-0 shadow-lg rounded-5 overflow-hidden">
+        <div class="card-header bg-dark text-white p-4">
+          <h3 class="mb-0 fw-bold"><i class="bi bi-file-earmark-medical me-2"></i> Create New Prescription</h3>
+          <p class="mb-0 text-white-50">Patient ID: {{ patientId }}</p>
+        </div>
+        <div class="card-body p-4 p-lg-5">
+          <form (ngSubmit)="onSubmit()">
+            <div class="mb-4">
+              <label class="form-label fw-bold">Diagnosis</label>
+              <textarea name="diagnosis" [(ngModel)]="prescription.diagnosis" class="form-control rounded-4 border-2" rows="3" placeholder="e.g., Seasonal Flu, High Blood Pressure..."></textarea>
+            </div>
+
+            <div class="row g-4 mb-4">
+              <div class="col-md-12">
+                <label class="form-label fw-bold">Medicines (Names)</label>
+                <input type="text" name="medicines" [(ngModel)]="prescription.medicines" class="form-control rounded-pill border-2" placeholder="e.g., Paracetamol, Amoxicillin...">
+              </div>
+            </div>
+
+            <div class="row g-4 mb-4">
+              <div class="col-md-4">
+                <label class="form-label fw-bold">Dosage</label>
+                <input type="text" name="dosage" [(ngModel)]="prescription.dosage" class="form-control rounded-pill border-2" placeholder="e.g., 500mg">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fw-bold">Frequency</label>
+                <input type="text" name="frequency" [(ngModel)]="prescription.frequency" class="form-control rounded-pill border-2" placeholder="e.g., 1-0-1">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fw-bold">Duration</label>
+                <input type="text" name="duration" [(ngModel)]="prescription.duration" class="form-control rounded-pill border-2" placeholder="e.g., 5 Days">
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <label class="form-label fw-bold">Special Notes</label>
+              <textarea name="notes" [(ngModel)]="prescription.notes" class="form-control rounded-4 border-2" rows="2" placeholder="e.g., Take after meals..."></textarea>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-info btn-lg text-white fw-bold rounded-pill py-3">
+                <i class="bi bi-check-circle-fill me-2"></i> Save Clinical Record
+              </button>
+              <button type="button" routerLink="/docdash" class="btn btn-outline-secondary border-0 small mt-2">
+                Discard and Return
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

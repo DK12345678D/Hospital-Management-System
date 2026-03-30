@@ -21,7 +21,6 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/lab")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class LabController {
 
     private final LabService labService;

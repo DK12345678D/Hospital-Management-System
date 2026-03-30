@@ -2,48 +2,94 @@
   <router-outlet></router-outlet>
 </div>
 
-<!-- Premium Global Footer -->
-<footer class="bg-dark text-white py-5 mt-5 border-top border-secondary border-opacity-25 shadow-lg">
-  <div class="container px-lg-5">
-    <div class="row g-5 align-items-center">
-      <div class="col-lg-4 text-center text-lg-start">
-        <a class="text-white text-decoration-none d-flex align-items-center justify-content-center justify-content-lg-start mb-4" routerLink="/home">
-           <i class="bi bi-hospital fs-2 text-info me-3"></i>
-           <div class="lh-1">
-             <div class="fw-bold fs-4 tracking-tight">SANJIVANI</div>
-             <div class="small fw-light opacity-50 text-uppercase tracking-widest" style="font-size: 0.65rem;">Health Hub Global</div>
-           </div>
-        </a>
-        <p class="small text-white-50 opacity-75">Sanjivani Healthcare is committed to providing world-class medical excellence with a heart of compassion and clinical expertise.</p>
-      </div>
-      
-      <div class="col-lg-4 text-center">
-         <div class="bg-white bg-opacity-5 rounded-4 p-4 d-inline-block shadow-sm">
-            <h6 class="fw-bold text-info mb-3 text-uppercase small ls-2">Emergency Response</h6>
-            <div class="display-6 fw-bold text-white mb-2 tracking-tighter">1066</div>
-            <p class="small text-white-50 mb-0">Global 24/7 Response Dial</p>
-         </div>
+  <footer class="bg-black text-white pt-5 pb-4 border-top border-white border-opacity-10 mt-auto">
+    <div class="container px-lg-5">
+      <div class="row g-5">
+        <!-- Clinic Collective -->
+        <div class="col-lg-4 col-md-12 text-center text-md-start">
+          <div class="d-flex align-items-center mb-4 justify-content-center justify-content-md-start">
+            <div class="brand-icon brand-circle bg-black text-danger p-2 me-3 shadow-lg border border-danger border-opacity-50" style="width: 44px; height: 44px;">
+              <i class="bi bi-heart-pulse-fill fs-4 text-danger"></i>
+            </div>
+            <h4 class="fw-bold tracking-tight mb-0">SANJIVANI <span class="text-danger fw-light">GLOBAL</span></h4>
+          </div>
+          <p class="text-white-50 lh-lg mb-4">A worldwide leader in precision medicine and compassionate care. Operating 50+ specialized clinical nodes with elite practitioner boards.</p>
+          <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+            <a href="#" class="social-node"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-node"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-node"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-node"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Navigation Hierarchy -->
+        <div class="col-lg-2 col-md-4 text-center text-md-start">
+          <h6 class="fw-bold text-info text-uppercase ls-1 mb-4">Hierarchy</h6>
+          <ul class="list-unstyled d-grid gap-2 opacity-75">
+            <li><a routerLink="/home" class="footer-link">Experience</a></li>
+            <li><a routerLink="/register" class="footer-link">Enrollment</a></li>
+            <li><a routerLink="/newsfeed" class="footer-link">Live Feed</a></li>
+            <li><a routerLink="/profile" class="footer-link">Identity</a></li>
+          </ul>
+        </div>
+
+        <!-- Portals & Nodes -->
+        <div class="col-lg-3 col-md-4 text-center text-md-start">
+          <h6 class="fw-bold text-info text-uppercase ls-1 mb-4">Patient Hub</h6>
+          <ul class="list-unstyled d-grid gap-2 opacity-75">
+            <li><a routerLink="/patientlogin" class="footer-link">Secure Portal</a></li>
+            <li><a routerLink="/admindash" class="footer-link">Admin Terminal</a></li>
+            <li><a routerLink="/doclogin" class="footer-link">Practitioner Login</a></li>
+            <li><a routerLink="/forgot-password" class="footer-link">Safety Recovery</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Intelligence -->
+        <div class="col-lg-3 col-md-4 text-center text-md-start">
+          <h6 class="fw-bold text-info text-uppercase ls-1 mb-4">Global Reach</h6>
+          <div class="d-flex align-items-center gap-3 mb-3 justify-content-center justify-content-md-start">
+            <div class="bg-white bg-opacity-10 p-2 rounded-3 text-info shadow-sm"><i class="bi bi-geo-alt"></i></div>
+            <span class="small opacity-75">Medical District, Sector 42, IN.</span>
+          </div>
+          <div class="d-flex align-items-center gap-3 mb-3 justify-content-center justify-content-md-start">
+            <div class="bg-white bg-opacity-10 p-2 rounded-3 text-info shadow-sm"><i class="bi bi-telephone"></i></div>
+            <span class="small opacity-75">+91 000 000 0000</span>
+          </div>
+          <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
+            <div class="bg-white bg-opacity-10 p-2 rounded-3 text-info shadow-sm"><i class="bi bi-envelope"></i></div>
+            <span class="small opacity-75">care@sanjivani.global</span>
+          </div>
+        </div>
       </div>
 
-      <div class="col-lg-4 text-center text-lg-end">
-        <h6 class="fw-bold text-white mb-4 text-uppercase small ls-2">Connect Digitally</h6>
-        <div class="d-flex gap-4 justify-content-center justify-content-lg-end mb-4">
-          <a href="#" class="text-white-50 fs-4 hover-info transition-all shadow-glow"><i class="bi bi-linkedin"></i></a>
-          <a href="#" class="text-white-50 fs-4 hover-info transition-all shadow-glow"><i class="bi bi-twitter-x"></i></a>
-          <a href="#" class="text-white-50 fs-4 hover-info transition-all shadow-glow"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="text-white-50 fs-4 hover-info transition-all shadow-glow"><i class="bi bi-facebook"></i></a>
+      <hr class="my-5 border-white border-opacity-10">
+
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="small opacity-50 mb-0">© 2025 Sanjivani Medical Board, Inc. Licensed Provider of Advanced Clinical Care.</p>
         </div>
-        <div class="small text-white-50 opacity-50">
-          © 2025 Sanjivani Healthcare Group. <br>All biological data points are encrypted.
+        <div class="col-md-6 text-center text-md-end">
+          <div class="d-flex gap-4 justify-content-center justify-content-md-end small opacity-50 f-8">
+            <a href="#" class="text-white text-decoration-none hover-white">Privacy Protocol</a>
+            <a href="#" class="text-white text-decoration-none hover-white">Operational Terms</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<style>
- .hover-info:hover { color: #06b6d4 !important; transform: translateY(-3px); }
- .shadow-glow:hover { text-shadow: 0 0 10px rgba(6, 182, 212, 0.7); }
- .tracking-tighter { letter-spacing: -0.05em; }
- .ls-2 { letter-spacing: 0.2em; }
-</style>
+  <style>
+    .footer-link { color: #fff; text-decoration: none; transition: 0.3s; font-size: 0.85rem; }
+    .footer-link:hover { color: #0dcaf0; transform: translateX(8px); display: inline-block; }
+    .social-node { 
+      background: rgba(255,255,255,0.05); color: #fff; width: 40px; height: 40px; 
+      display: flex; align-items: center; justify-content: center; border-radius: 50%;
+      text-decoration: none; transition: 0.4s; border: 1px solid rgba(255,255,255,0.1);
+    }
+    .social-node:hover { background: #0dcaf0; color: #212529; transform: translateY(-5px); border-color: #0dcaf0; box-shadow: 0 0 15px rgba(13, 202, 240, 0.4); }
+    .ls-1 { letter-spacing: 0.15em; }
+    .ls-2 { letter-spacing: 0.2em; }
+    .f-8 { font-size: 0.8rem; }
+    .hover-white:hover { opacity: 1; transition: 0.2s; color: #0dcaf0 !important; cursor: pointer; }
+    .shadow-2xl { box-shadow: 0 -10px 40px rgba(0,0,0,0.4); }
+  </style>

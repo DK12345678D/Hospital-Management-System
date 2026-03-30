@@ -21,7 +21,6 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/ipd")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class AdmissionController {
 
     private final AdmissionRepository admissionRepository;

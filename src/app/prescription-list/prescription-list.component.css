@@ -1,0 +1,18 @@
+.container-fluid {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.card {
+  transition: transform 0.2s;
+  border-radius: 20px;
+}
+
+.table th {
+  font-size: 0.85rem;
+  letter-spacing: 0.05rem;
+}
+
+.hover-up:hover {
+  transform: translateY(-5px);
+}

@@ -1,62 +1,69 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand py-2" routerLink="/home">
-      <i class="bi bi-hospital me-2 text-info fs-4"></i>
-      <span class="fw-bold tracking-tight">SANJIVANI</span>
-      <span class="ms-1 fw-light text-secondary">HEALTH</span>
-    </a>
-  </div>
-</nav>
-
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-4">
-      <div class="card border-0 shadow-lg p-4 bg-white rounded-4 animate-slide-up">
-        
-        <div class="text-center mb-4 mt-2">
-          <div class="bg-primary bg-opacity-10 d-inline-flex p-3 rounded-circle mb-3">
-            <i class="bi bi-person-heart text-primary fs-3"></i>
+<div class="auth-wrapper d-flex align-items-center justify-content-center min-vh-100" style="background: url('hospital_hero_organic_1774851845797.png') no-repeat center center / cover;">
+  <div class="overlay position-absolute w-100 h-100 top-0 start-0" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.7) 0%, rgba(45, 212, 191, 0.7) 100%); backdrop-filter: blur(8px);"></div>
+  
+  <div class="container position-relative z-index-3">
+    <div class="row justify-content-center">
+      <div class="col-md-5 col-lg-4">
+        <div class="glass-card p-5 rounded-5 border border-white border-opacity-20 shadow-2xl animate-fade-in text-center" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);">
+          
+          <div class="brand-icon bg-primary text-white p-3 rounded-circle d-inline-flex mb-4 shadow-lg">
+            <i class="bi bi-person-heart fs-3"></i>
           </div>
-          <h3 class="fw-bold text-dark mb-1">Patient Portal</h3>
-          <p class="text-muted small px-3">Enter your medical credentials to access your health records and appointments.</p>
-        </div>
+          
+          <h2 class="text-dark fw-bold tracking-tight mb-1">Patient Portal</h2>
+          <p class="text-secondary small mb-5 px-3">Enter your credentials to access your personalized health journey.</p>
 
-        <form (ngSubmit)="checkLogin()">
-          <div class="mb-4">
-            <label class="form-label text-xs fw-bold text-uppercase text-muted letter-spacing-1 mb-2">EMAIL IDENTIFIER</label>
-            <div class="input-group">
-              <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-envelope text-secondary"></i></span>
-              <input type="email" class="form-control border-0 bg-light py-2 shadow-none" placeholder="name@domain.com" [(ngModel)]="email" name="email" required>
+          <form (ngSubmit)="checkLogin()">
+            <div class="field-group mb-4 text-start">
+              <label class="form-label text-muted small fw-bold text-uppercase ls-1 mb-2">Email Address</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 text-primary"><i class="bi bi-envelope-at-fill"></i></span>
+                <input type="email" class="form-control bg-light border-0 py-3" placeholder="name@domain.com" [(ngModel)]="email" name="email" required>
+              </div>
             </div>
+
+            <div class="field-group mb-5 text-start">
+              <div class="d-flex justify-content-between mb-2">
+                <label class="form-label text-muted small fw-bold text-uppercase ls-1 mb-0">Password</label>
+                <a routerLink="/forgot-password" class="text-primary small text-decoration-none fw-bold">Forgot?</a>
+              </div>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0 text-primary"><i class="bi bi-lock-fill"></i></span>
+                <input type="password" class="form-control bg-light border-0 py-3" placeholder="••••••••" [(ngModel)]="password" name="password" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-lg d-flex align-items-center justify-content-center gap-2 mb-4">
+              <i class="bi bi-shield-check"></i>
+              Authenticate Access
+            </button>
+
+            <div class="text-center">
+              <span class="text-muted small">New to Sanjivani? </span>
+              <a routerLink="/register" class="text-primary small text-decoration-none fw-bold border-bottom border-primary border-2 pb-1">Sign Up Now</a>
+            </div>
+          </form>
+
+          <a routerLink="/home" class="text-secondary small text-decoration-none fw-bold mt-4 d-inline-block hover-primary">
+            <i class="bi bi-arrow-left me-1"></i> Return Home
+          </a>
+
+          <div *ngIf="invalidLogin" class="alert alert-danger border-0 rounded-4 mt-4 animate-shake py-2 small">
+            Authentication mismatch. Please try again.
           </div>
-
-          <div class="mb-5">
-            <div class="d-flex justify-content-between">
-              <label class="form-label text-xs fw-bold text-uppercase text-muted letter-spacing-1 mb-2">AUTH PASSWORD</label>
-              <a routerLink="/forgot-password" class="text-decoration-none small text-primary fw-medium opacity-75 hover-opacity-100">Forgot?</a>
-            </div>
-            <div class="input-group">
-              <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-lock text-secondary"></i></span>
-              <input type="password" class="form-control border-0 bg-light py-2 shadow-none" placeholder="••••••••" [(ngModel)]="password" name="password" required>
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 shadow-sm d-flex align-items-center justify-content-center gap-2 mb-3">
-            <i class="bi bi-shield-lock-fill"></i>
-            AUTHENTICATE ACCESS
-          </button>
-
-          <footer class="text-center mt-2 pb-2">
-            <span class="text-muted fs-7">Don't have an account? </span>
-            <a routerLink="/register" class="text-primary text-decoration-none fs-7 fw-bold border-bottom border-primary border-2 pb-1 ms-1">Sign Up</a>
-          </footer>
-        </form>
-
-        <div *ngIf="invalidLogin" class="alert alert-danger border-0 rounded-3 mt-4 animate-shake py-2 fs-7 d-flex align-items-center gap-2">
-          <i class="bi bi-exclamation-triangle-fill"></i>
-          Authentication failed. Check metrics and retry.
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+  .ls-1 { letter-spacing: 0.1em; }
+  .tracking-tight { letter-spacing: -0.025em; }
+  .animate-fade-in { animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .hover-primary:hover { color: var(--accent) !important; }
+  .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+  .z-index-3 { z-index: 3; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .form-control:focus { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); border: 1px solid var(--accent) !important; }
+</style>

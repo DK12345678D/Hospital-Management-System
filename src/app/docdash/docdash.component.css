@@ -1,53 +1,65 @@
-/* Table container */
+/* Premium Dashboard Layout */
+.card {
+  border-radius: 1.5rem !important;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-up:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12) !important;
+}
+
 .table {
-  border-radius: 12px;
-  overflow: hidden;
-  /* keeps header corners rounded */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  /* slightly deeper shadow for depth */
-  background-color: #fff;
-  border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
+  border-spacing: 0 12px !important;
+  border-collapse: separate !important;
 }
 
-/* Table header styling */
-.table thead {
-  background-color: #010101;
-  /* slightly darker for contrast */
-  color: #fff;
+.table thead th {
+  background-color: transparent !important;
+  color: #94a3b8 !important;
+  font-size: 0.7rem !important;
   text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 0.03em;
-  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 1.5rem 1rem !important;
+  border: none !important;
 }
 
-/* Optional: Zebra striping for rows */
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f8f9fa;
+.table tbody tr {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+  border-radius: 1rem;
+  transition: all 0.2s ease;
 }
 
-/* Hover effect for rows */
-.table-hover tbody tr:hover {
-  background-color: #e6f0fa;
-  transition: background-color 0.2s ease-in-out;
-  cursor: pointer;
+.table tbody tr:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  background-color: #fff !important;
 }
 
-/* Table cell padding for compact layout */
-.table th,
 .table td {
-  padding: 0.75rem 1rem;
-  vertical-align: middle;
+  border: none !important;
+  padding: 1.5rem 1rem !important;
 }
 
-/* Navbar fixed at top */
+.badge {
+  padding: 0.6em 1.2em !important;
+  font-weight: 700 !important;
+}
+
+/* Animations */
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Shared Components */
 .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
   z-index: 1030;
-  /* ensures it stays above content */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  /* subtle shadow for navbar */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
 }

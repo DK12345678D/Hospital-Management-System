@@ -6,7 +6,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg">
   <div class="container-fluid px-4">
     <a class="navbar-brand d-flex align-items-center" routerLink="/home">
-      <i class="bi bi-hospital me-2 text-info fs-4"></i> SANJIVANI <span class="ms-1 fw-light">HOSPITALS</span>
+      <div class="brand-icon brand-circle bg-black text-danger p-2 me-3 shadow-lg border border-danger border-opacity-30" style="width: 44px; height: 44px;">
+        <i class="bi bi-heart-pulse-fill fs-4 text-danger"></i>
+      </div>
+      <div class="lh-1">
+        <div class="fw-bold fs-4 tracking-tight text-white mb-0">SANJIVANI <span class="text-danger fw-light">GLOBAL</span></div>
+        <div class="small fw-light opacity-50 text-uppercase tracking-widest text-danger" style="font-size: 0.65rem;">Registry Refinement Node</div>
+      </div>
     </a>
     <div class="ms-auto">
       <ul class="navbar-nav mb-2 mb-lg-0">
@@ -73,13 +79,21 @@
               <label class="form-label fw-bold text-muted small text-uppercase">Serology / Blood</label>
               <div class="input-group">
                 <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-droplet-half fs-5 text-danger"></i></span>
-                <input
-                  type="text"
-                  class="form-control bg-light border-0 py-3 shadow-none fw-medium"
-                  [(ngModel)]="patient.blood"
+                <select 
+                  class="form-select bg-light border-0 py-3 shadow-none fw-medium" 
+                  [(ngModel)]="patient.blood" 
                   name="blood"
-                  placeholder="Group"
-                />
+                  required>
+                  <option value="" disabled>Select Group</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
               </div>
             </div>
 
@@ -129,13 +143,17 @@
               <label class="form-label fw-bold text-muted small text-uppercase">Case Escalation Level</label>
               <div class="input-group">
                 <span class="input-group-text bg-light border-0 px-4"><i class="bi bi-exclamation-octagon fs-5 text-warning"></i></span>
-                <input
-                  type="text"
-                  class="form-control bg-light border-0 py-3 shadow-none fw-medium"
-                  [(ngModel)]="patient.urgency"
+                <select 
+                  class="form-select bg-light border-0 py-3 shadow-none fw-medium" 
+                  [(ngModel)]="patient.urgency" 
                   name="urgency"
-                  placeholder="Escalate or Normal"
-                />
+                  required>
+                  <option value="" disabled>Select Level</option>
+                  <option value="Stable">Stable</option>
+                  <option value="Moderate">Moderate</option>
+                  <option value="Critical">Critical</option>
+                  <option value="Emergency">Emergency</option>
+                </select>
               </div>
             </div>
 

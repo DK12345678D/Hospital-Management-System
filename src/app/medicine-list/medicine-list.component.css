@@ -1,42 +1,44 @@
-/* Table Styling */
-.table {
-  border-radius: 12px;
-  /* rounded corners */
-  overflow: hidden;
-  /* ensures rounded corners apply to header */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  /* softer shadow */
-  border-collapse: separate;
-  /* keeps rounded corners with box-shadow */
+/* Premium Pharmacy Dashboard */
+.card {
+  border-radius: 2rem !important;
+  border: none !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Table Header */
-.table thead {
-  background-color: #08090a;
-  /* modern dark gray-blue */
-  color: #fff;
+.shadow-2xl {
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.table tbody tr {
+  background: white;
+  margin-bottom: 2rem;
+  border-radius: 1.25rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.table tbody tr:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  background: white !important;
+}
+
+.table thead th {
+  color: #64748b !important;
+  font-size: 0.75rem !important;
   text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 0.03em;
-  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 1.5rem !important;
+  border: none !important;
+  background-color: transparent !important;
 }
 
-/* Zebra striping for rows */
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f8f9fa;
+.table td {
+  padding: 1.5rem !important;
+  border: none !important;
+  vertical-align: middle;
 }
 
-/* Hover effect */
-.table-hover tbody tr:hover {
-  background-color: #eef4fb;
-  transition: background-color 0.2s ease-in-out;
-}
-
-/* Navbar fixed at top */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1030;
-  /* ensures it stays above content */
+.btn-sm.rounded-pill {
+  padding: 0.4rem 1.2rem !important;
 }

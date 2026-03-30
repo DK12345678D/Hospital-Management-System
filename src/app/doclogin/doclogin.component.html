@@ -1,65 +1,70 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 shadow-lg">
-  <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
-      <i class="bi bi-hospital-fill me-2 text-info fs-4"></i>
-      <span class="fw-bold tracking-tight">SANJIVANI</span>
-      <span class="ms-1 fw-light text-secondary">HEALTH</span>
-    </a>
-  </div>
-</nav>
-
-<div class="container-fluid py-5 bg-light min-vh-100 d-flex align-items-center">
-  <div class="container">
+<div class="auth-wrapper d-flex align-items-center justify-content-center min-vh-100" style="background: url('medical_security_background_premium_1774851912935.png') no-repeat center center / cover;">
+  <div class="overlay position-absolute w-100 h-100 top-0 start-0" style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.75) 0%, rgba(6, 182, 212, 0.75) 100%); backdrop-filter: blur(10px);"></div>
+  
+  <div class="container position-relative z-index-3">
     <div class="row justify-content-center">
       <div class="col-md-5 col-lg-4">
-        <div class="card border-0 shadow-2xl p-5 bg-white rounded-5 animate-scale-in">
+        <div class="glass-card p-5 rounded-5 border border-white border-opacity-10 shadow-2xl animate-fade-in text-center" style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(30px);">
           
-          <div class="text-center mb-5 mt-2">
-            <div class="bg-primary bg-opacity-10 d-inline-flex p-3 rounded-circle mb-3">
-              <i class="bi bi-person-badge text-primary fs-3"></i>
-            </div>
-            <h3 class="fw-black text-dark tracking-tightest mb-1">DOCTOR PORTAL</h3>
-            <p class="text-secondary small">Identify clinical credentials for node access.</p>
+          <div class="brand-icon bg-info text-dark p-3 rounded-circle d-inline-flex mb-4 shadow-lg">
+            <i class="bi bi-person-badge-fill fs-3"></i>
           </div>
+          
+          <h2 class="text-white fw-bold tracking-tight mb-1">Doctor Portal</h2>
+          <p class="text-white-50 small mb-5 px-3">Secure identification for clinical specialists</p>
 
           <form (ngSubmit)="checkLogin()">
-            <div class="mb-4">
-              <label class="form-label text-xs fw-bold text-uppercase text-muted letter-spacing-1 mb-2">CLINICAL IDENTIFIER (EMAIL)</label>
+            <div class="field-group mb-4 text-start">
+              <label class="form-label text-white-50 small fw-bold text-uppercase ls-1 mb-2">Clinical Email</label>
               <div class="input-group">
-                <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-envelope text-secondary"></i></span>
-                <input type="text" class="form-control border-0 bg-light py-2-5 shadow-none" placeholder="name@domain.com" [(ngModel)]="username" name="username" required>
+                <span class="input-group-text bg-white bg-opacity-10 border-0 text-white"><i class="bi bi-envelope-check-fill"></i></span>
+                <input type="text" class="form-control bg-white bg-opacity-10 border-0 text-white py-3" placeholder="physician@sanjivani.com" [(ngModel)]="username" name="username" required>
               </div>
             </div>
 
-            <div class="mb-5">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <label class="form-label text-xs fw-bold text-uppercase text-muted letter-spacing-1 mb-0">AUTH PASS-KEY</label>
-                <a routerLink="/forgot-password" class="text-decoration-none small text-primary fw-medium opacity-75 hover-opacity-100">Forgot?</a>
+            <div class="field-group mb-5 text-start">
+              <div class="d-flex justify-content-between mb-2">
+                <label class="form-label text-white-50 small fw-bold text-uppercase ls-1 mb-0">Password Key</label>
+                <a routerLink="/forgot-password" class="text-info small text-decoration-none fw-bold">Forgot?</a>
               </div>
               <div class="input-group">
-                <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-shield-lock text-secondary"></i></span>
-                <input type="password" class="form-control border-0 bg-light py-2-5 shadow-none" placeholder="••••••••" [(ngModel)]="password" name="password" required>
+                <span class="input-group-text bg-white bg-opacity-10 border-0 text-white"><i class="bi bi-shield-lock-fill"></i></span>
+                <input type="password" class="form-control bg-white bg-opacity-10 border-0 text-white py-3" placeholder="••••••••" [(ngModel)]="password" name="password" required>
               </div>
             </div>
 
-            <button type="submit" [disabled]="loading" class="btn btn-primary w-100 py-3 rounded-4 shadow-sm d-flex align-items-center justify-content-center gap-2 mb-4 transition-all">
-              <i *ngIf="!loading" class="bi bi-unlock-fill"></i>
+            <button type="submit" [disabled]="loading" class="btn btn-info w-100 py-3 rounded-pill fw-bold shadow-lg d-flex align-items-center justify-content-center gap-2 mb-4">
               <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
-              {{ loading ? 'INITIALIZING AUTH...' : 'SECURE ACCESS' }}
+              {{ loading ? 'Initialising...' : 'Verify & Access' }}
             </button>
 
-            <footer class="text-center pb-2">
-              <span class="text-muted fs-7 opacity-75">New practitioner? </span>
-              <a routerLink="/register" class="text-primary text-decoration-none fs-7 fw-bold border-bottom border-primary border-2 pb-1 ms-1">Registry Enrollment</a>
-            </footer>
+            <div class="text-center">
+              <span class="text-white-50 small">New clinician? </span>
+              <a routerLink="/register" class="text-info small text-decoration-none fw-bold border-bottom border-info border-2 pb-1">Registry Enrollment</a>
+            </div>
+
+            <a routerLink="/home" class="text-white-50 small text-decoration-none fw-bold mt-4 d-block hover-white">
+              <i class="bi bi-arrow-left me-1"></i> Return Home
+            </a>
           </form>
 
-          <div *ngIf="invalidLogin" class="alert alert-danger border-0 rounded-4 mt-4 animate-shake py-2 fs-7 d-flex align-items-center gap-2">
-            <i class="bi bi-exclamation-octagon-fill"></i>
-            Verification failed. Retry credentials.
+          <div *ngIf="invalidLogin" class="alert bg-danger bg-opacity-20 text-danger border-0 rounded-4 mt-4 animate-shake py-2 small">
+            Clinical authentication failed.
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+  .ls-1 { letter-spacing: 0.1em; }
+  .tracking-tight { letter-spacing: -0.025em; }
+  .animate-fade-in { animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .hover-white:hover { color: white !important; }
+  .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+  .z-index-3 { z-index: 3; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .form-control::placeholder { color: rgba(255, 255, 255, 0.4); }
+  .form-control:focus { box-shadow: none; border: 1px solid rgba(255, 255, 255, 0.3) !important; }
+</style>

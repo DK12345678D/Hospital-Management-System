@@ -1,30 +1,47 @@
-.table {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border-radius: 25px;
-  overflow: hidden;
+/* Premium Patient File Review */
+.card {
+  border-radius: 3rem !important;
+  border: none !important;
+  transition: all 0.5s ease;
 }
 
-.table thead {
-  background-color: #95A5A6;
-  color: #fff;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  font-weight: bold;
+.shadow-2xl {
+  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.2) !important;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f8f9fa;
+.bg-primary {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
 }
 
-.table-hover tbody tr:hover {
-  background-color: #e8f0f8;
-  transition: background-color 0.2s ease-in-out;
+.badge {
+  padding: 0.8rem 1.5rem !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.05em;
+  border: none !important;
 }
 
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1030;
+.bg-primary-subtle {
+  background-color: #f1f5f9;
+}
+
+.bg-light {
+  background-color: #f8fafc !important;
+  border-radius: 1.5rem !important;
+}
+
+.animate-fade-in {
+  animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.btn-primary.shadow-lg {
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3) !important;
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
 }

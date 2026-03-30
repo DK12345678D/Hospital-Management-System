@@ -4,8 +4,7 @@ import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-doclogin',
-  templateUrl: './doclogin.component.html',
-  styleUrls: ['./doclogin.component.css']
+  templateUrl: './doclogin.component.html'
 })
 export class DocloginComponent implements OnInit {
 

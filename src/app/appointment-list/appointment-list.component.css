@@ -1,39 +1,57 @@
-/* Table Styling */
-.table {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  /* softer shadow */
-  border-radius: 8px;
-  overflow: hidden;
-  /* keeps rounded corners on header */
+/* Premium Scheduling Dashboard */
+.card {
+  border-radius: 2.5rem !important;
+  border: none !important;
 }
 
-/* Table Header */
-.table thead {
-  background-color: #34495e;
-  /* darker gray-blue for contrast */
-  color: #fff;
+.shadow-2xl {
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.12) !important;
+}
+
+.table thead th {
+  color: #94a3b8 !important;
+  font-size: 0.7rem !important;
   text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 0.03em;
-  font-weight: 600;
+  letter-spacing: 0.2em;
+  padding: 2rem 1.5rem !important;
+  border: none !important;
+  background-color: transparent !important;
 }
 
-/* Zebra stripes for rows */
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f8f9fa;
+.table tbody tr {
+  background: white;
+  border-radius: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  border: 1px solid #f8fafc;
 }
 
-/* Hover effect */
-.table-hover tbody tr:hover {
-  background-color: #e8f0f8;
-  transition: background-color 0.2s ease-in-out;
+.table tbody tr:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  border-color: #e2e8f0;
+  z-index: 10;
+  position: relative;
 }
 
-/* Navbar */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1030;
-  /* ensures it stays above content */
+.table td {
+  padding: 2rem 1.5rem !important;
+  vertical-align: middle;
+  border: none !important;
+}
+
+.badge-danger-subtle {
+  background-color: #fef2f2;
+  color: #ef4444;
+}
+
+.btn-outline-danger {
+  border-width: 2px !important;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-danger:hover {
+  background-color: #ef4444 !important;
+  color: white !important;
+  transform: translateY(-2px);
 }

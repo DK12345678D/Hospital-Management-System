@@ -6,6 +6,7 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
+import org.springdoc.core.customizers.GlobalOpenApiCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,5 +28,18 @@ public class SwaggerConfig {
                                                                 .type(SecurityScheme.Type.HTTP)
                                                                 .scheme("bearer")
                                                                 .bearerFormat("JWT")));
+        }
+
+        @Bean
+        public GlobalOpenApiCustomizer globalOpenApiCustomizer() {
+                return openApi -> {
+                        if (openApi.getPaths() != null) {
+                                // Count every individual HTTP method (GET, POST, PUT, DELETE, etc.)
+                                long totalOperations = openApi.getPaths().values().stream()
+                                                .flatMap(pathItem -> pathItem.readOperations().stream())
+                                                .count();
+                                openApi.getInfo().setTitle("Hospital Management System API (Total: " + totalOperations + " APIs)");
+                        }
+                };
         }
 }

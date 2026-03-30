@@ -1,0 +1,63 @@
+<div class="container-fluid px-lg-5 py-5">
+  <div class="row g-4 mb-5">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <div>
+        <h2 class="fw-bold text-dark display-6 mb-1">Prescription Records</h2>
+        <p class="text-secondary fs-5 opacity-75">View and manage clinical prescriptions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-lg rounded-5 bg-white overflow-hidden p-0 mb-5">
+    <div class="card-header bg-white border-bottom border-light p-4 px-lg-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+       <div class="d-flex align-items-center">
+         <div class="bg-primary-subtle text-primary p-2 rounded-3 me-3">
+            <i class="bi bi-file-earmark-medical fs-4"></i>
+         </div>
+         <h4 class="mb-0 fw-bold">Active Prescriptions</h4>
+       </div>
+       <div class="input-group" style="max-width: 400px;">
+          <input type="text" name="search" [(ngModel)]="searchText" class="form-control bg-light border-0 py-2 shadow-none" placeholder="Search by patient/doctor...">
+       </div>
+    </div>
+
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 text-nowrap">
+          <thead class="bg-light text-muted fw-bold">
+            <tr>
+              <th class="ps-5 py-3 border-0">PATIENT</th>
+              <th class="py-3 border-0">DOCTOR</th>
+              <th class="py-3 border-0">DIAGNOSIS</th>
+              <th class="py-3 border-0">MEDICINES</th>
+              <th class="py-3 border-0">DOSAGE</th>
+              <th class="py-3 border-0">DATE</th>
+              <th class="pe-5 text-center py-3 border-0">ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of prescriptions | filter : searchText" class="border-bottom border-light">
+              <td class="ps-5">
+                <div class="fw-bold text-dark">{{ p.patient?.name }}</div>
+                <div class="small text-muted">#{{ p.patient?.id }}</div>
+              </td>
+              <td>{{ p.doctor?.name }}</td>
+              <td>{{ p.diagnosis }}</td>
+              <td><span class="badge bg-info-subtle text-info rounded-pill px-3">{{ p.medicines }}</span></td>
+              <td>{{ p.dosage }} ({{ p.frequency }})</td>
+              <td>{{ p.prescribedAt | date:'mediumDate' }}</td>
+              <td class="pe-5 text-center">
+                <button (click)="p.id !== undefined && deletePrescription(p.id)" class="btn btn-sm btn-outline-danger border-2 rounded-pill px-3">
+                  <i class="bi bi-trash"></i> Delete
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="prescriptions.length === 0">
+              <td colspan="7" class="text-center py-5 text-muted">No prescriptions found.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

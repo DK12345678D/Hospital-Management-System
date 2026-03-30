@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Patient } from './patient';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PatientService {
-  private baseUrl = 'http://localhost:7777/api/v1/patients';
+  private baseUrl = `${environment.apiUrl}/api/v1/patients`;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -16,7 +17,7 @@ export class PatientService {
   }
 
   createPatient(patient: Patient): Observable<Patient> {
-    return this.httpClient.post<Patient>(`${this.baseUrl}`, patient);
+    return this.httpClient.post<Patient>(`${this.baseUrl}/register`, patient);
   }
 
   getPatientById(id: number): Observable<Patient> {

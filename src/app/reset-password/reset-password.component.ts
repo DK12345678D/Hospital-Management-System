@@ -4,8 +4,7 @@ import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css']
+  templateUrl: './reset-password.component.html'
 })
 export class ResetPasswordComponent implements OnInit {
 
@@ -20,7 +19,7 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.data.identifier = params['email'] || '';
+      this.data.identifier = params['identifier'] || params['email'] || '';
     });
   }
 

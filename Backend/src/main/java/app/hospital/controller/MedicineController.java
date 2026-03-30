@@ -23,7 +23,6 @@ import app.hospital.model.Medicine;
 import app.hospital.repository.MedicineRepository;
 
 @RestController
-@CrossOrigin(allowedHeaders = "*",origins = "*")
 @RequestMapping("/api/v2/")
 public class MedicineController {
 
